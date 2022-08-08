@@ -2,7 +2,7 @@
 
 This labsheet covers the following topics:
 
-1. <a href="https://github.com/paulodowd/EMATM0054_22-23/blob/main/Labsheets/Core/L0_TroubleShooting.md#1-i-cant-upload-my-code-to-the-3pi--romi-it-wont-connect">I can't upload my code to the 3Pi+ / Romi, it won't connect.</a>
+1. <a href="https://github.com/paulodowd/EMATM0054_22-23/blob/main/Labsheets/Core/L0_TroubleShooting.md#1-i-cant-upload-my-code-to-the-3pi--romi-it-wont-connect"> No Serial Port / I can't upload my code to the 3Pi+.</a>
 2. I can't upload my code on Ubuntu (linux)
 3. I'm using a float for a calculation but I always get a result of 0.
 4. My if() statement isn't working.
@@ -11,7 +11,7 @@ This labsheet covers the following topics:
 
 <br><br><br><br>
 
-## 1. I can't upload my code to the 3Pi+ / Romi, it won't connect.
+## 1. No Serial Port / I can't upload my code to the 3Pi+.
 
 The 3Pi+ can sometimes lose its ability to connect to your computer. 
 Follow these steps to fix it. On rare occasions, this problem can keep re-occuring, but this method can be repeated quickly and easily.
