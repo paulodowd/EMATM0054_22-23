@@ -95,7 +95,7 @@ read the operation from right-to-left, excepting the normal mathematical rules.
 It is good practice to assume the compiler (or Arduino) is very stupid, and will make the worst choice for you. Therefore, you should try to make sure you are always using the appropriate variable type. If you have a good (smart) compiler which handles types well, lucky you! But why take that risk?
 
 The following example within Arduino 1.8.13 will always report a result of 0, when (if done properly) it should report 0.5:
-```
+```c
   float result;
   int a;
   int b;
@@ -118,7 +118,7 @@ In the above, if we read left-to-right, it appears as if the following line is g
 ...we can see that a/b takes place as integers. In this case, the compiler assumes the type on the right-hand side is (int), and executes the operation as int in working memory, and only afterwards stores the result into a float. So your result will always store a 0 (rounding error).
 
 To perform the above calculation a safer manner, the calculation can be broken into explicit steps, making use of typecasting, which also helps with the readability of your code:
-```
+```c
   float result;
   int a;
   int b;
@@ -132,7 +132,7 @@ To perform the above calculation a safer manner, the calculation can be broken i
   Serial.println( result );
 ```
 You will also see this phenomenon when working with hard-coded constants ("magic numbers"). The following code example will also produce a result of 0 on Arduino 1.8.13:
-```
+```c
   float result;
   result = 1 / 2;
   Serial.println( result );
@@ -140,7 +140,7 @@ You will also see this phenomenon when working with hard-coded constants ("magic
 In the above, "1" and "2" have not been declared as variables, and therefore the compiler has to make a decision for you about what type they are. Because they are written as whole numbers, the compiler decides they are integers, causing the same error as above.
 
 You can work successfully with declared constants with the following minor adjustment, which prompts the compiler to treat the numbers as type float:
-```
+```c
   float result;
   result = 1.0 / 2.0;
   Serial.println( result );
