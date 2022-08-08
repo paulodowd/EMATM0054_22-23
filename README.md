@@ -24,6 +24,9 @@ As a 20 Credit unit of study, you are expected to **invest 16 hours per week** t
 
 ## Supplementary Labsheets
 
-## Example Reports
+## A2 Experiment Ideas
+
+<a href="">List of Previous Abstracts</a>
+<a href="">Example Reports</a>
 
 ## Teaching Team
