@@ -2,9 +2,9 @@
 Teaching Materials for Robotic Systems EMATM0054 AY 2022-2023
 
 1. <a href="">Suggested Timeline</a>
-2. <a href="">Core Labsheets</a>
+2. <a href="">Core Labsheets</a> (weeks 1 - 6)
 3. <a href="">Supplementary Labsheets</a>
-4. <a href="">A2 Experiment Ideas</a>
+4. <a href="">A2 Experiment Ideas</a> (weeks 6 - 11)
 
 ## Suggested Timeline
 
