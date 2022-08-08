@@ -14,7 +14,9 @@ This labsheet covers the following topics:
 ## 1. No Serial Port / I can't upload my code to the 3Pi+.
 
 The 3Pi+ can sometimes lose its ability to connect to your computer. 
-Follow these steps to fix it. On rare occasions, this problem can keep re-occuring, but this method can be repeated quickly and easily.
+You can find <a href="https://www.pololu.com/docs/0J83/10.1">official documentation on how to fix this here</a>.
+You can also follow these steps to fix it. 
+On rare occasions, this problem can keep re-occuring, but this method can be repeated quickly and easily.
 
 ### Step1
 - Open the Arduino IDE
@@ -54,10 +56,18 @@ Whilst the LED is fading:
 - Wait for the code to compile. Wait until the Arduino IDE is searching for the port to connect to. You will see something like the the white text appearing in the image below.
 - When you see the Arduino IDE searching for a port, press the reset button twice (quickly) again to get the fading LED.
 
+<p align="center">
+<img src="https://github.com/paulodowd/EMATM0054_22-23/blob/main/Images/searching_for_port.png?raw=true">
+</p>
+
 ### Step 7
 - Wait, and you should see text like the below image confirming the correct upload. 
 - If not, try the process again. Sometimes it can go wrong if you don't successsfully double-press the reset button quickly enough. 
 - If, after a few attempts, you cannot get this to work, contact one of the teaching staff for the unit.
+
+<p align="center">
+  <img src="https://github.com/paulodowd/EMATM0054_22-23/blob/main/Images/success.png?raw=true">
+  </p>
 
 ### Step 8
 - share this technique with your peers if they need help.
