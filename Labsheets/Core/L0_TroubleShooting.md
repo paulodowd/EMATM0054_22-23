@@ -2,7 +2,7 @@
 
 This labsheet covers the following topics:
 
-1. I can't upload my code to the 3Pi+ / Romi, it won't connect.
+1. <a href="https://github.com/paulodowd/EMATM0054_22-23/blob/main/Labsheets/Core/L0_TroubleShooting.md#1-i-cant-upload-my-code-to-the-3pi--romi-it-wont-connect">I can't upload my code to the 3Pi+ / Romi, it won't connect.</a>
 2. I can't upload my code on Ubuntu (linux)
 3. I'm using a float for a calculation but I always get a result of 0.
 4. My if() statement isn't working.
