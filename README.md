@@ -16,7 +16,7 @@ As a 20 Credit unit of study, you are expected to **invest 16 hours per week** t
 
 Start Here: <a href="https://github.com/paulodowd/EMATM0054_22-23/blob/main/Labsheets/Core/L0_Troubleshooting.md"> FAQ / Trouble Shooting</a><br>
 
-|  <div style="width:150px">&nbsp;</div>             | Labsheet Title | Estimated Time | Description |
+|  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;            | Labsheet Title | Estimated Time | Description |
 |---------------|----------------|----------------|-------------|
 | [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/paulodowd/EMATM0054_22-23/blob/main/Labsheets/Core/L0_Troubleshooting.ipynb) | FAQ / TroubleShooting | n/a | Review common problems and solutions |
 | [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/paulodowd/EMATM0054_22-23/blob/main/Labsheets/Core/L1_MeetThe3PI.ipynb) | Labsheet 1: Getting Started, Uploading, Debugging | 2 hours | Very basic exercises to familiarise with coding and the 3Pi+ robot. |
