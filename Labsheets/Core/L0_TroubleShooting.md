@@ -4,7 +4,7 @@ This labsheet covers the following topics:
 
 1. <a href="https://github.com/paulodowd/EMATM0054_22-23/blob/main/Labsheets/Core/L0_TroubleShooting.md#1-i-cant-upload-my-code-to-the-3pi--romi-it-wont-connect"> No Serial Port / I can't upload my code to the 3Pi+.</a>
 2. <a href="https://github.com/paulodowd/EMATM0054_22-23/blob/main/Labsheets/Core/L0_TroubleShooting.md#2-i-cant-upload-my-code-on-ubuntu-linux">I can't upload my code on Ubuntu (linux)</a>
-3. <a href="https://github.com/paulodowd/EMATM0054_22-23/blob/main/Labsheets/Core/L0_TroubleShooting.md#3-my-if-statement-isnt-working>My if() statement isn't working.</a>
+3. <a href="https://github.com/paulodowd/EMATM0054_22-23/blob/main/Labsheets/Core/L0_TroubleShooting.md#3-my-if-statement-isnt-working">My if() statement isn't working.</a>
 4. <a href="https://github.com/paulodowd/EMATM0054_22-23/blob/main/Labsheets/Core/L0_TroubleShooting.md#3-my-float-calculation-isnt-working">My float calculation isn't working</a>
 5. <a href="https://github.com/paulodowd/EMATM0054_22-23/blob/main/Labsheets/Core/L0_TroubleShooting.md#5-faster--slower--strange-behaviour-with-serialprint">Faster / Slower / Strange behaviour with Serial.print()</a>
 6. <a href="https://github.com/paulodowd/EMATM0054_22-23/blob/main/Labsheets/Core/L0_TroubleShooting.md#6-switch-case-warning">Switch Case warning.</a>
