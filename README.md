@@ -14,7 +14,8 @@ As a 20 Credit unit of study, you are expected to **invest 16 hours per week** t
 
 ## Core Labsheets
 
-0. <a href="https://github.com/paulodowd/EMATM0054_22-23/blob/main/Labsheets/Core/L0_Troubleshooting.md"> FAQ / Trouble Shooting</a><br>
+Start Here: <a href="https://github.com/paulodowd/EMATM0054_22-23/blob/main/Labsheets/Core/L0_Troubleshooting.md"> FAQ / Trouble Shooting</a><br>
+
 1. <a href="https://github.com/paulodowd/EMATM0054_22-23/blob/main/Labsheets/Core/L1_MeetThe3PI.ipynb">Meet The 3Pi+</a>
 2. <a href="https://github.com/paulodowd/EMATM0054_22-23/blob/main/Labsheets/Core/L2_Motors.ipynb">Motors</a>
 3. <a href="">Line Sensors, Line Following</a>
