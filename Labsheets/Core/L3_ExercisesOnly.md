@@ -13,23 +13,23 @@ In this labsheet, we will only work with the 3 central line sensors beneath the 
 
 2. Save your previous work, and start a new sketch (source code file).  Give this a useful name, such as "lineSensorTest", or "Labsheet3".
 
-3. Use the 3Pi+ <a href="https://www.pololu.com/docs/0J83/5.9">documentation</a> to find and note down the correct 32u4 `GPIO` pins we will need to operate the 3 central line sensors.  You will want to use pin numbers given in the column labelled `Arduino pin names`, because we are working within the Arduino IDE: 
-  - `EMIT` pin.
-  - input pins for the 3 central sensors labelled `DN2`, `DN3`, and `DN4`.
-
-4. Use the standard Arduino template of `setup()` and `loop()`.  If you are unsure, you could open the Arduino IDE example "Blink" and adjust the code therein.  At the top of your file in `global scope`:
-  - Add `#define` statements to create references for the pins you have found above.
+3. Use the standard Arduino template of `setup()` and `loop()`.  If you are unsure, you could open the Arduino IDE example "Blink" and adjust the code therein.  At the top of your file in `global scope`:
+  - Add `#define` statements to create references:
+  - DN2 should be set as A0 (left most sensor)
+  - DN3 should be set as A2 (middle sensor)
+  - DN4 should be set as A3 (right sensor)
+  - EMIT should be set as 11 (IR LED power)
   - Use meaningful names, such as "LS_LEFT_IN_PIN", "LS_CENTRE_IN_PIN", "LS_RIGHT_IN_PIN" (where LS represents "line sensor").
 
-5. Add code to `setup()` to set:
+4. Add code to `setup()` to set:
   - EMIT pin mode as an `OUTPUT`.
   - The 3 line sensor input pins mode as `INPUT`
   - Add `Serial` functionality to help you to later debug your code.  Add a print command to transmit to you that the Arduino has completed setup.  
   - You can refer back to previous work to find examples of all the built-in functions you require.
 
-6. **Hardware:** Thinking ahead, should the `EMIT` pin be set `HIGH`, or `LOW` to enable the IR LEDs for the line sensors?
-  - either use the documentation, or review the circuit schematic and discussion above.
-
+5. **Hardware:** Thinking ahead, should the `EMIT` pin be set `HIGH`, or `LOW` to enable the IR LEDs for the line sensors?
+  - either use the <a href="https://www.pololu.com/docs/0J83/5.5">documentation</a>, or review the circuit schematic and discussion above.
+  
 <hr>
 <br><br><br><br>
 
