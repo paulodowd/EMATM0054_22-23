@@ -16,6 +16,24 @@ As a 20 Credit unit of study, you are expected to **invest 16 hours per week** t
 
 Start Here: <a href="https://github.com/paulodowd/EMATM0054_22-23/blob/main/Labsheets/Core/L0_Troubleshooting.md"> FAQ / Trouble Shooting</a><br>
 
+<table>
+<tr>
+  <td>
+[![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/paulodowd/EMATM0054_22-23/blob/main/Labsheets/Core/L1_MeetThe3PI.ipynb)</td><td> Labsheet 1: Getting Started, Uploading, Debugging </td><td> some text </td>
+  </tr>
+  
+<tr>
+  <td>
+[![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/paulodowd/EMATM0054_22-23/blob/main/Labsheets/Core/L1_MeetThe3PI.ipynb)</td><td> Labsheet 1: Getting Started, Uploading, Debugging </td><td> some text </td>
+  </tr>
+  
+<tr>
+  <td>
+[![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/paulodowd/EMATM0054_22-23/blob/main/Labsheets/Core/L1_MeetThe3PI.ipynb)</td><td> Labsheet 1: Getting Started, Uploading, Debugging </td><td> some text </td>
+  </tr>
+  </table>
+  
+  
 1. <a href="https://github.com/paulodowd/EMATM0054_22-23/blob/main/Labsheets/Core/L1_MeetThe3PI.ipynb">Meet The 3Pi+</a>
 2. <a href="https://github.com/paulodowd/EMATM0054_22-23/blob/main/Labsheets/Core/L2_Motors.ipynb">Motors</a>
 3. <a href="">Line Sensors</a>
