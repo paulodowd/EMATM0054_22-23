@@ -18,6 +18,7 @@ Start Here: <a href="https://github.com/paulodowd/EMATM0054_22-23/blob/main/Labs
 
 |               | Labsheet Title | Description |
 |---------------|----------------|-------------|
+| [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/paulodowd/EMATM0054_22-23/blob/main/Labsheets/Core/L0_Troubleshooting.ipynb) | FAQ / TroubleShooting | some text |
 | [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/paulodowd/EMATM0054_22-23/blob/main/Labsheets/Core/L1_MeetThe3PI.ipynb) | Labsheet 1: Getting Started, Uploading, Debugging | some text |
 | [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/paulodowd/EMATM0054_22-23/blob/main/Labsheets/Core/L1_MeetThe3PI.ipynb) | Labsheet 2: Motors | some text |
 | [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/paulodowd/EMATM0054_22-23/blob/main/Labsheets/Core/L1_MeetThe3PI.ipynb) | Labsheet 3: Line Sensors | some text |
