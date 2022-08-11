@@ -3,7 +3,7 @@
 <hr>
 <br><br><br><br>
 
-## Exercise 1: Setup
+## Exercise 1: Setup (15 minutes)
 
 To begin with, put aside your previous work with the 3Pi+.  When we are first developing for new hardware, we want to keep the process as simple and as error free as possible.  Therefore, for now we do not need any code relating to the operation of the motors (Labshseet 2).  
 
@@ -33,7 +33,8 @@ In this labsheet, we will only work with the 3 central line sensors beneath the 
 <hr>
 <br><br><br><br>
 
-## Exercise 2: Sensor Validation
+## Exercise 2: Sensor Validation (30 minutes)
+
 
 1. Test your knowledge:
   - what is the difference between an `unsigned long` and a `long`?
@@ -42,10 +43,68 @@ In this labsheet, we will only work with the 3 central line sensors beneath the 
     - an `unsigned long`?
     - a `long`?
 
+**Example Operation:**
+
+
+Remembering the theory of our line sensor operation, we can utilise `micros()` to calculate how much time has elapsed whilst the capacitor was discharging.  Reading the comments in this example should help with understanding:
+
+```c
+// Define which pin the sensor is attached to
+// We can find this in the online documentation
+#define LS_LEFT_PIN  A0
+
+// An example of line sensor operation
+// Example is operating just one line sensor,
+// LS_LEFT_
+void loop() {
+
+  // Charge capacitor by setting input pin
+  // temporarily to output and HIGH
+  pinMode( LS_LEFT_PIN, OUTPUT );
+  digitalWrite( LS_LEFT_PIN, HIGH );
+
+  // Tiny delay for capacitor to charge.
+  delayMicroseconds(10);
+
+  //  Turn input pin back to an input
+  pinMode( LS_LEFT_PIN, INPUT );
+
+  // Places to store microsecond count
+  unsigned long start_time; // t_1
+  unsigned long end_time;   // t_2
+
+  // Store current microsecond count
+  start_time = micros();
+
+  // Stay in a loop whilst the capacitor
+  // is still registering as "HIGH".
+  while( digitalRead( LS_LEFT_PIN ) == HIGH ) {
+    // Do nothing
+  }
+
+  // store microsecond count afterwards
+  end_time = micros();
+
+  // Calculate elapsed time
+  unsigned long elapsed_time; // t_elapsed
+  elapsed_time = end_time - start_time;
+
+  // Print output.
+  Serial.print("Left line sensor: " );
+  Serial.print( elapsed_time );
+  Serial.print("\n");
+
+  // Delay, to read our sensor slowly
+  // but consistently.
+  delay(100);
+
+} // end of main loop()
+```
+	
 It is important to first validate that the example above works on your 3Pi+.  Use the above example code, and update it according to the following exercise prompts:
 
 2. The above example given in `loop()` has the following assumptions you need to address in your own code to create a working example:
-  - Ensure that you have completed your `setup()` routine to set the relevant `GPIO` pins into a good initial state.
+  - Ensure that you have completed your `setup()` routine to set the relevant `GPIO` pins (A0, A2, A3, 11) into a good initial state.
   - The example assumes that the IR LEDs were enabled (turned-on) within `setup()`.  What is the initial state of your IR LEDs?
   - To enable the line sensor IR LEDs, does `EMIT` need to be set as an `OUTPUT` in state `HIGH`, or `LOW`?  You can check either the schematic or documentation.  
   - **Help:** A common problem at this stage is that you have not enabled the IR LEDs (EMIT pin), and so your sensors take a very long time to read.  
@@ -59,7 +118,7 @@ It is important to first validate that the example above works on your 3Pi+.  Us
     - glossy and matte surfaces.
     - you can <a href="https://github.com/paulodowd/EMATM0053_21_22/tree/main/PrintableSheets">download and print</a> a grey-scale test sheet from Github.
     
-4. Note down the smallest time reported and the largest time reported:
+4. Note down the smallest time reported and the largest time reported.  You will need to use `Serial.print()`:
   - How do these correspond to your different surfaces?
   - How many milliseconds is the longest time reported? 
   - **Evaluate:** For the longest time reported, how many bits would be needed to represent this decimal value in binary?  How does this compare to the bit-resolution of the `ADC` available within the 32u4 microcontroller?
@@ -81,11 +140,11 @@ It is important to first validate that the example above works on your 3Pi+.  Us
 <hr>
 <br><br><br><br>
 
-## Exercise 3: Improving the Example
+## Exercise 3: Improving the Example (30 minutes)
 
-The example code provided above has significant room for improvement.  
+The example code provided above has significant room for improvement.  For now, we will continue working with just 1 sensor.  
 
-The below code extract is the part of the routine that waits for the `digitalRead()` measurement to go `LOW`.  Currently, in extreme cases the sensor may take approximately 2400 microseconds (2.4milliseconds) to complete on a very black surface.  Furthermore, an ambient light measurement (if the IR LEDs are off) can exceed 5000microseconds (5millisceonds).  In both cases, millisecond durations are quite long and undesirable. 
+The below code extract is the part of the routine that waits for the `digitalRead()` measurement to go `LOW`.  Currently, in extreme cases the sensor may take approximately 2400 microseconds (2.4milliseconds) to complete on a very black surface.  Furthermore, an ambient light measurement (if the IR LEDs are off) can exceed 5000microseconds (5millisceonds).  In both cases, millisecond durations are quite long and undesirable.   Whilst your 3Pi+ is within `while( digitalRead( LS_LEFT_PIN ) == HIGH )` it cannot read other sensors or change motor power, etc.  This is called `blocking` code.  
 
 ```c
 
@@ -206,10 +265,12 @@ void readLineSensor() {
 
 
 
+
+
 <hr>
 <br><br><br><br>
 
-## Exercise 4: Implementing Multiple Sensors
+## Exercise 4: Implementing Multiple Sensors (1 hour)
 
 
 
@@ -240,7 +301,7 @@ Example parallel sensor read code:
 // from the online documentation.
 #define LS_LEFT_PIN   A0
 #define LS_CENTRE_PIN A2
-#define LS_CENTER_PIN A3
+#define LS_RIGHT_PIN A3
 
 // Define the max number of sensors to use.
 #define NB_LS_PINS 3
@@ -355,6 +416,7 @@ The above code extract contains elements of code which may be useful.  However, 
 3. Integrate the above example code into your existing code for a single sensor.  
   - Remember to keep versions of your code as you work.
   - Remember to keep the operation to **enable the IR LEDs** (EMIT pin).
+  
 
 4. Implement a short routine using a `for()` loop (following a similar structure above) to:
   - Operate the capacitor charging for each sensor, `DN1`, `DN2`, `DN3`.
@@ -372,7 +434,7 @@ The above code extract contains elements of code which may be useful.  However, 
 ```
   - What would be the effect or problem of storing subsequent values?
   - What would be a potential effect of decreasing our `remaining` variable when only 1 sensor is returning `LOW` on `digitalRead()`?
-  - We could set the variables `sensor_read[ ]` to a known initial value, aboev represented as `???????`.  If this initial value is seen, the algorithm would know it has not been updated to a value of `elapsed_time`.  Once `elapsed_time` has been recorded into `sensor_read[]`, it would mean the initial value would be lost and this if() statement would not be true again.
+  - We could set the variables `sensor_read[ ]` to a known initial value, above represented as `???????`.  If this initial value is seen, the algorithm would know it has not been updated to a value of `elapsed_time`.  Once `elapsed_time` has been recorded into `sensor_read[]`, it would mean the initial value would be lost and this if() statement would not be true again.
   - What initial value would be effective?  There are three sensible answers to this question.  
   - Replace `?????` with your initial value so the code will compile and work.
 
@@ -447,7 +509,7 @@ At this stage, you should now have a number of variables and processes all relat
 <hr>
 <br><br><br><br>
 
-## Exercise 6: Schedule the Line Sensor Read
+## Exercise 6: Schedule the Line Sensor Read (20 minutes)
 
 1. **Decompose the Problem:** Write a very short program to test how fast `loop()` operates with a minimum of code and without any calls to `delay()`:  
   - use `micros()` and calculate the elapsed time, and report this back to your computer Serial Monitor using `Serial.print()`.
