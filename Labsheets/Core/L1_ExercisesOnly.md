@@ -1,5 +1,7 @@
 # Labsheet 1: Getting Started, Uploading, Debugging (Exercises Only)
 
+<br><br><br><br>
+
 ## Exercise 1: Pololu 3Pi+ (10 minutes)
 
 <p align="center">
