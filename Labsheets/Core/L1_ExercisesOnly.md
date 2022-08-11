@@ -1,6 +1,12 @@
 # Labsheet 1: Getting Started, Uploading, Debugging (Exercises Only)
 
-## Exercise 1: Pololu 3Pi+
+## Exercise 1: Pololu 3Pi+ (10 minutes)
+
+<p align="center">
+<br>
+<img src="https://github.com/paulodowd/EMATM0053_21_22/blob/main/images/3PI_Top_Annotated.png?raw=true">
+<br>
+</p>
 
 1. **Hypothesise (task):** The above image was annotated with `front` and `rear` with respect to the robot chassis.  In theory, the robot can be driven in either direction, regardless of front or rear.  What rationale or justification would you use to support the provided sense of robot direction?
   - **help:** consider:
@@ -19,28 +25,28 @@
 <hr>
 <br><br><br><br>
 
-## Exercise 2: Upload an Example
+## Exercise 2: Upload an Example (10 minutes)
 
-1. What is meant by `non-volatile` storage?  What is `volatile` storage or memory?
+1. Research, what is meant by `non-volatile` storage?  What is `volatile` storage or memory?
 
 2. Review the <a href="https://www.arduino.cc/reference/en/">Arduino Reference</a>, investigating any functions that might seem useful.  It is probably a good idea to bookmark this page in your web-browser.
 
 3. Upload the Blink example sketch to the 3Pi+:
   - tell the IDE which type of microcontroller you wish to upload code to. To do this, select: 
     - `Tools --> Board --> Arduino Leonardo`. 
+  - Plug your 3Pi+ to the computer with an appropriate USB cable.
   - tell the IDE which serial port the arduino is connected to. Select:
     - `Tools --> Port --> COM X (Arduino Leonardo)`
     - The correct port may be given different names on PC, Mac and Linux.
-  - Plug your 3Pi+ to the computer with an appropriate USB cable.
   - Press the `upload` button on the Arduino IDE. 
-  - **Help**: If you have significant issues, read through Labsheet 0: Troubleshooting.  You can also contact a member of the teaching staff.
+  - **Help**: If you have significant issues, read through <a href="https://colab.research.google.com/github/paulodowd/EMATM0054_22-23/blob/main/Labsheets/Core/L0_Troubleshooting.ipynb">FAQ / Troubleshooting</a>.  You can also contact a member of the teaching staff.
 
 4. Modify the example code to blink the LED at 5hz.
 
 <hr>
 <br><br><br><br>
 
-## Exercise 3: Using Variables
+## Exercise 3: Using Variables (10 minutes)
 
 1. Add code to the main loop of the Blink example which stops the LED from flashing after 10 flashes.
     - **Help:** you will need to use an `if()` conditional statement (selection) to check the status of a variable you create to count up to 10.  You can think of this as a way to branch your code (go one direction or another).  As a template, you might want to structure your code like:
@@ -63,7 +69,7 @@ if( my_count < 10 ) {
 <hr>
 <br><br><br><br>
 
-## Exercise 4: Using Functions
+## Exercise 4: Using Functions (30 minutes)
 
 1. Write a function to rapidly toggle the buzzer on your 3Pi+, so that we can hear it beep:
   - Write your function so that everytime it is called the buzzer switches on and then off.  Use `digitalWrite()` to achieve this. 
@@ -108,11 +114,18 @@ void beep( int toggle_duration ) {
 <br><br><br><br>
 
 
-## Exercise 5: Serial Output
+## Exercise 5: Serial Output (5 minutes)
 
 1. Intergrate the above example code with your work from Exercise 4.  Report the current `toggle_duration` being used in your beep function for the buzzer.
-  - **Help:** If you do not include a `newline` in your Serial print statement, you will see a long stream of numbers running across the Serial Monitor.  There are two ways to include a `newline`
+  - **Help:** If you do not include a `newline` in your Serial print statement, the monitor may not update meaning you will not see anything.  You may see a long stream of numbers running across the Serial Monitor.  There are two ways to include a `newline`:
     - `Serial.println()`, println automatically adds a `newline`.  This is convenient.  However, sometimes you will need to print multiple numbers to a single line, so you would not want a `newline`.
-    - `Serial.print("\n");` print does not automatically include a `newline`, but you can add one manually with the `"\n"` special character.  You can also use print in this way to add a comma, e.g. `Serial.print(",");`
+    - `Serial.print("\n");` print does not automatically include a `newline`, but you can add one manually with the `"\n"` special character.  You can also use print in this way to add a comma, e.g. `Serial.print(",");`.  This can be useful to print consecutive values to review per line:
+    ```c
+    Serial.print( value1 );
+    Serial.print( "," );
+    Serial.print( value2 );
+    Serial.print( "," );
+    Serial.print( value3 );
+    Serial.print( "\n" );
     
 
