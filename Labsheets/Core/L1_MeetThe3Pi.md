@@ -17,7 +17,6 @@ In this labsheet you will:
 
 ## 3Pi+ Overview Video
 
-<video src="https://www.youtube.com/watch?v=BRJKrKbe4Uw">
 
 [![3PI+ Overview Video](https://img.youtube.com/vi/BRJKrKbe4Uw/0.jpg)](https://www.youtube.com/watch?v=BRJKrKbe4Uw)
 
