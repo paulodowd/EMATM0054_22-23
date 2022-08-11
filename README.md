@@ -27,15 +27,7 @@ Start Here: <a href="https://github.com/paulodowd/EMATM0054_22-23/blob/main/Labs
 | [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/paulodowd/EMATM0054_22-23/blob/main/Labsheets/Core/L1_MeetThe3PI.ipynb) | Labsheet 6: Odometry | 4 hours  | some text |
 | [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/paulodowd/EMATM0054_22-23/blob/main/Labsheets/Core/L1_MeetThe3PI.ipynb) | Labsheet 7: PID | 6 hours  | some text |
   
-  
-  
-1. <a href="https://github.com/paulodowd/EMATM0054_22-23/blob/main/Labsheets/Core/L1_MeetThe3PI.ipynb">Meet The 3Pi+</a>
-2. <a href="https://github.com/paulodowd/EMATM0054_22-23/blob/main/Labsheets/Core/L2_Motors.ipynb">Motors</a>
-3. <a href="">Line Sensors</a>
-4. <a href="">Line Following</a>
-5. <a href="https://github.com/paulodowd/EMATM0054_22-23/blob/main/Labsheets/Core/L5_FiniteStateMachine.ipynb"> Finite State Machine</a>
-6. <a href="https://github.com/paulodowd/EMATM0054_22-23/blob/main/Labsheets/Core/L6_Odometry.ipynb"> Odometry</a>
-7. <a href="https://github.com/paulodowd/EMATM0054_22-23/blob/main/Labsheets/Core/L7_PID.ipynb"> PID </a>
+ 
 
 ## Supplementary Labsheets
 
