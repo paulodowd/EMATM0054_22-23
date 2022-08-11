@@ -4,9 +4,9 @@ This labsheet covers the following topics:
 
 1. <a href="https://github.com/paulodowd/EMATM0054_22-23/blob/main/Labsheets/Core/L0_TroubleShooting.md#1-i-cant-upload-my-code-to-the-3pi--romi-it-wont-connect"> No Serial Port / I can't upload my code to the 3Pi+.</a>
 2. I can't upload my code on Ubuntu (linux)
-3. I'm using a float for a calculation but I always get a result of 0.
+3. My float calculation isn't working
 4. My if() statement isn't working.
-5. The Timing of my Code changes with Serial.print().
+5. Faster / Slower / Strange behaviour with Serial.print()
 6. Switch Case warning.
 
 <br><br><br><br>
@@ -85,7 +85,7 @@ If you are using Linux and have trouble following the instructions above, your i
 
 <br><br><br><br>
 
-## 3. I'm using a float for a calculation but I always get a result of 0
+## 3. My float calculation isn't working
 
 If you are performing a calculation and your result is always 0 or NaN, it is highly likely that you have an issue with the type of your variable. Remember that an integer, long, char, byte (etc) can only represent a whole number, whilst a float or a double can store fractional parts. Therefore, dividing two integers (or other similar type) will often result in a rounding error.
 
@@ -148,7 +148,7 @@ You can work successfully with declared constants with the following minor adjus
 
 
 <br><br><br><br>
-## I'm using a float for a calculation but I always get a result of 0
+### I'm using a float for a calculation but I always get a result of 0
 
 If you are performing a calculation and your result is always 0 or `NaN`, it is highly likely that you have an issue with the **type** of your variable.  Remember that an `integer`, `long`, `char`, `byte` (etc) can only represent a whole number, whilst a `float` or a `double` can store fractional parts. Therefore, dividing two integers (or other similar type) will often result in a rounding error.   
 
@@ -220,7 +220,7 @@ You can work successfully with declared constants with the following minor adjus
   Serial.println( result );
 ```
 
-## My if() statement isn't working
+### My if() statement isn't working
 
 The following compiles without any errors or warnings, but should be considered **incorrect**:
 
@@ -331,13 +331,13 @@ To save yourself time debugging, make a habit of always using curly-braces - tha
 <br><br><br><br>
 
 
-# The Timing of my Code changes with Serial.print()
+## 4. Faster / Slower / Strange behaviour with Serial.print()
 
 There is a known issue with `Serial.print` and `Serial.println` on the Romi.  You may find that your Romi becomes irratic or the timing of its behaviour changes when you unplug the USB cable.  Sometimes, you may unplug your Romi and it works fine for 2 minutes, and then goes crazy. This appears to be an error with Serial Print.
 
 There are two steps required to fix this problem.  
 
-## Step 1:
+### Step 1:
 
 Include the following code at the top of your main program (the first tab in the Arduino IDE):
 
@@ -349,7 +349,7 @@ u8 USB_SendSpace(u8 ep);
 
 Note that, if you use `Serial.print` or `Serial.println` within other source files, you may need to include this at the top of those files too.  Try to compile your code without it, and see if there are useful errors.  
 
-## Step 2:
+### Step 2:
 
 At every location you use `Serial.print` or `Serial.println`, you should wrap your code in the following way:
 
@@ -368,7 +368,7 @@ Note that, you can also use `if( SERIAL_ACTIVE ) { }` to create different behavi
 
 <br><br><br><br>
 
-# Switch Case Warning
+## 5. Switch Case Warning
 
 From previous experience on this unit, there is occasionally an issue where the standard `switch case` selection mechanism does not operate properly.  You may find that even though your conditional statement is valid, the `switch case` fails to enter the valid case and execute code.  It is not known why this happens - presumably there is a bug in the compiler.
 
