@@ -12,7 +12,7 @@ As a 20 Credit unit of study, you are expected to **invest 16 hours per week** t
 
 << timeline / difficulty image >>
 
-## Core Labsheets
+## Core Labsheets (Assessment 1)
 
 Start Here: <a href="https://github.com/paulodowd/EMATM0054_22-23/blob/main/Labsheets/Core/L0_Troubleshooting.md"> FAQ / Trouble Shooting</a><br>
 
@@ -29,7 +29,7 @@ Start Here: <a href="https://github.com/paulodowd/EMATM0054_22-23/blob/main/Labs
   
  
 
-## Supplementary Labsheets
+## Supplementary Labsheets (Assessment 2)
 
 ## A2 Experiment Ideas
 
