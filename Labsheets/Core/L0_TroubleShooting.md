@@ -3,11 +3,11 @@
 This labsheet covers the following topics:
 
 1. <a href="https://github.com/paulodowd/EMATM0054_22-23/blob/main/Labsheets/Core/L0_TroubleShooting.md#1-i-cant-upload-my-code-to-the-3pi--romi-it-wont-connect"> No Serial Port / I can't upload my code to the 3Pi+.</a>
-2. I can't upload my code on Ubuntu (linux)
-3. My float calculation isn't working
-4. My if() statement isn't working.
-5. Faster / Slower / Strange behaviour with Serial.print()
-6. Switch Case warning.
+2. <a href="https://github.com/paulodowd/EMATM0054_22-23/blob/main/Labsheets/Core/L0_TroubleShooting.md#2-i-cant-upload-my-code-on-ubuntu-linux">I can't upload my code on Ubuntu (linux)</a>
+3. <a href="https://github.com/paulodowd/EMATM0054_22-23/blob/main/Labsheets/Core/L0_TroubleShooting.md#3-my-float-calculation-isnt-working">My float calculation isn't working</a>
+4. My if() statement isn't working.</a>
+5. Faster / Slower / Strange behaviour with Serial.print()</a>
+6. Switch Case warning.</a>
 
 <br><br><br><br>
 
@@ -85,7 +85,117 @@ If you are using Linux and have trouble following the instructions above, your i
 
 <br><br><br><br>
 
-## 3. My float calculation isn't working
+## 3. My if() statement isn't working
+
+The following compiles without any errors or warnings, but should be considered **incorrect**:
+
+```c
+if( 1 < x < 10 ) {
+    
+}
+```
+
+The behaviour of the above is unknown.  A safer, better determined syntax is available.  In C and Arduino, the condition of an if() statement is evaluated to be either true or false as a single entity.  **The above would be better written as**:
+
+```c
+if( ( 1 < x ) && ( x < 10 ) ) {
+    
+}
+```
+
+In the above:
+- the right-hand condition is evaluated, `1 < x` (true or false)
+- the left-hand condition is evaluated, `x < 10` (true or false)
+- both results are then evaluated together against `&&` (true of false)
+- which results in a single conditional evaluation to pass or fail as true or false.
+
+If we return to the first example, we can imagine `x` has a value of 1:
+
+```c
+if( 1 < 1 < 10 ) {
+    
+}
+```
+
+When we attempt to resolve this statement, we can consider that:
+- `( 1 < 1 )` is false.
+- `( 1 < 10 )` is true.
+
+We don't know whether the machine code will resolve to fail the left-side, or pass the right-side.  So if you wish to make more than one conditional evaluation:
+- you should use the `&&` and `||` operators
+- or use multiple nested if() statements.
+
+### Another common problem with if() statements:
+
+Another common problem with if() statements is to use the single equals sign `=` which acts as an assignment of value (stores a value), rather than the double equals sign which acts as as evaluation.  Again, unfortunately, the compiler will not prompt you with a warning or error:
+
+```c
+int a = 1;
+int b = 2;
+
+// This is incorrect.
+// a will be assigned b's value.
+if( a = b ) {
+    // This will run if 'a' receives a positive, non-zero value.
+}
+
+// This is correct.
+// a will be evaluated against b.
+if( a == b ) {
+    
+}
+
+```
+
+### Yet another common problem with if() statements
+
+It is valid syntax to use an if() statement without curly-braces `{}`.  This can be useful if you have only one line of code to operate.  However, it is advised you always use curly-braces to avoid any potential confusion.  Consider the following example:
+
+```c
+if( a == b ) 
+    processA();
+    discardB();
+```
+
+In the above function, it looks like `processA()` and `processB()` will run as a result of the if() statement.  In fact, the way the above will resolve is as following:
+
+```c
+if( a == b ) {
+    processA();
+}
+discardB();   //this will always happen, regardless of the if()
+```
+
+This can also be confusing if else statements are used, for the same reason:
+
+
+```c
+if( a == b )
+    processA();
+else
+    processB();
+    discardA();
+```
+
+Again, the above will actually resolve to behave as the following:
+
+```c
+if( a == b ) {
+    processA();
+} else {
+    processB();
+}
+discardA();
+```
+
+To save yourself time debugging, make a habit of always using curly-braces - that way the intention of your code is always clear.
+
+
+
+
+<br><br><br><br>
+
+## 4. My float calculation isn't working
 
 If you are performing a calculation and your result is always 0 or NaN, it is highly likely that you have an issue with the type of your variable. Remember that an integer, long, char, byte (etc) can only represent a whole number, whilst a float or a double can store fractional parts. Therefore, dividing two integers (or other similar type) will often result in a rounding error.
 
@@ -220,118 +330,10 @@ You can work successfully with declared constants with the following minor adjus
   Serial.println( result );
 ```
 
-### My if() statement isn't working
-
-The following compiles without any errors or warnings, but should be considered **incorrect**:
-
-```c
-if( 1 < x < 10 ) {
-    
-}
-```
-
-The behaviour of the above is unknown.  A safer, better determined syntax is available.  In C and Arduino, the condition of an if() statement is evaluated to be either true or false as a single entity.  **The above would be better written as**:
-
-```c
-if( ( 1 < x ) && ( x < 10 ) ) {
-    
-}
-```
-
-In the above:
-- the right-hand condition is evaluated, `1 < x` (true or false)
-- the left-hand condition is evaluated, `x < 10` (true or false)
-- both results are then evaluated together against `&&` (true of false)
-- which results in a single conditional evaluation to pass or fail as true or false.
-
-If we return to the first example, we can imagine `x` has a value of 1:
-
-```c
-if( 1 < 1 < 10 ) {
-    
-}
-```
-
-When we attempt to resolve this statement, we can consider that:
-- `( 1 < 1 )` is false.
-- `( 1 < 10 )` is true.
-
-We don't know whether the machine code will resolve to fail the left-side, or pass the right-side.  So if you wish to make more than one conditional evaluation:
-- you should use the `&&` and `||` operators
-- or use multiple nested if() statements.
-
-### Another common problem with if() statements:
-
-Another common problem with if() statements is to use the single equals sign `=` which acts as an assignment of value (stores a value), rather than the double equals sign which acts as as evaluation.  Again, unfortunately, the compiler will not prompt you with a warning or error:
-
-```c
-int a = 1;
-int b = 2;
-
-// This is incorrect.
-// a will be assigned b's value.
-if( a = b ) {
-    // This will run if 'a' receives a positive, non-zero value.
-}
-
-// This is correct.
-// a will be evaluated against b.
-if( a == b ) {
-    
-}
-
-```
-
-### Yet another common problem with if() statements
-
-It is valid syntax to use an if() statement without curly-braces `{}`.  This can be useful if you have only one line of code to operate.  However, it is advised you always use curly-braces to avoid any potential confusion.  Consider the following example:
-
-```c
-if( a == b ) 
-    processA();
-    discardB();
-```
-
-In the above function, it looks like `processA()` and `processB()` will run as a result of the if() statement.  In fact, the way the above will resolve is as following:
-
-```c
-if( a == b ) {
-    processA();
-}
-discardB();   //this will always happen, regardless of the if()
-```
-
-This can also be confusing if else statements are used, for the same reason:
-
-
-```c
-if( a == b )
-    processA();
-else
-    processB();
-    discardA();
-```
-
-Again, the above will actually resolve to behave as the following:
-
-```c
-if( a == b ) {
-    processA();
-} else {
-    processB();
-}
-discardA();
-```
-
-To save yourself time debugging, make a habit of always using curly-braces - that way the intention of your code is always clear.
-
-
-
-
 <br><br><br><br>
 
 
-## 4. Faster / Slower / Strange behaviour with Serial.print()
+## 5. Faster / Slower / Strange behaviour with Serial.print()
 
 There is a known issue with `Serial.print` and `Serial.println` on the Romi.  You may find that your Romi becomes irratic or the timing of its behaviour changes when you unplug the USB cable.  Sometimes, you may unplug your Romi and it works fine for 2 minutes, and then goes crazy. This appears to be an error with Serial Print.
 
@@ -368,7 +370,7 @@ Note that, you can also use `if( SERIAL_ACTIVE ) { }` to create different behavi
 
 <br><br><br><br>
 
-## 5. Switch Case Warning
+## 6. Switch Case Warning
 
 From previous experience on this unit, there is occasionally an issue where the standard `switch case` selection mechanism does not operate properly.  You may find that even though your conditional statement is valid, the `switch case` fails to enter the valid case and execute code.  It is not known why this happens - presumably there is a bug in the compiler.
 
