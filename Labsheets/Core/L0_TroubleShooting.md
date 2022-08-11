@@ -81,7 +81,7 @@ If you are using Linux and have trouble following the instructions above, your i
 
 `sudo systemctl disable ModemManager`
 
-**You should also check that you have access rights to the Serial port as it appears on your system.** If you install Arduino through a package manager (e.g. `apt get intall`, this may have been resolved for you.
+**You should also check that you have access rights to the Serial port as it appears on your system.** If you install Arduino through a package manager (e.g. `apt get intall`), this may have been resolved for you.
 
 <br><br><br><br>
 
