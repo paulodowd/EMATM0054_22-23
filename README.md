@@ -19,9 +19,9 @@ As a 20 Credit unit of study, you are expected to **invest 16 hours per week** t
 ### Video Demonstration
 
 ### System Block Diagram
-<br>
+
 <a href="https://github.com/paulodowd/EMATM0054_22-23/blob/main/Images/SystemBlockDiagram.png?raw=true"><img src=https://github.com/paulodowd/EMATM0054_22-23/blob/main/Images/SystemBlockDiagram.png?raw=true></a>
-<br>
+
 ## Core Labsheets (Assessment 1)
 
 Start Here: <a href="https://github.com/paulodowd/EMATM0054_22-23/blob/main/Labsheets/Core/L0_Troubleshooting.md"> FAQ / Trouble Shooting</a><br>
