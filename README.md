@@ -33,7 +33,7 @@ Start Here: <a href="https://github.com/paulodowd/EMATM0054_22-23/blob/main/Labs
 |  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;            | Labsheet Title | Estimated Time | Description |
 |---------------|----------------|----------------|-------------|
 | [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/paulodowd/EMATM0054_22-23/blob/main/Labsheets/Core/L0_Troubleshooting.ipynb) | FAQ / TroubleShooting | n/a | Review common problems and solutions |
-| [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/paulodowd/EMATM0054_22-23/blob/main/Labsheets/Core/L1_MeetThe3PI.ipynb) | **Labsheet 1**:\n Getting Started, Uploading, Debugging | 2 hours | Very basic exercises to familiarise with coding and the 3Pi+ robot. <br><a href="https://github.com/paulodowd/EMATM0054_22-23/blob/main/Labsheets/Core/L1_ExercisesOnly.md">(Link to Exercises Only)</a> |
+| [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/paulodowd/EMATM0054_22-23/blob/main/Labsheets/Core/L1_MeetThe3PI.ipynb) | **Labsheet 1**: Getting Started, Uploading, Debugging | 2 hours | Very basic exercises to familiarise with coding and the 3Pi+ robot. <br><a href="https://github.com/paulodowd/EMATM0054_22-23/blob/main/Labsheets/Core/L1_ExercisesOnly.md">(Link to Exercises Only)</a> |
 | [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/paulodowd/EMATM0054_22-23/blob/main/Labsheets/Core/L2_Motors.ipynb) | **Labsheet 2**: Motors | 4 hours | Exercises to get your robot moving, steps to be confident that your code will behave predictably, and writing a Class. <br><a href="https://github.com/paulodowd/EMATM0054_22-23/blob/main/Labsheets/Core/L2_ExercisesOnly.md">(Link to Exercises Only)</a> |
 | [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/paulodowd/EMATM0054_22-23/blob/main/Labsheets/Core/L3_LineSensors.ipynb) | **Labsheet 3**: Line Sensors | 6 hours | Incremental exercises to get the line sensors working.  The first difficult programming exercise in terms of logic and iteration. <br><a href="https://github.com/paulodowd/EMATM0054_22-23/blob/main/Labsheets/Core/L3_ExercisesOnly.md">(Link to Exercises Only)</a> |
 | [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/paulodowd/EMATM0054_22-23/blob/main/Labsheets/Core/L4_LineFollowing.ipynb) | **Labsheet 4**: Line Following | 4 hours  | Exercises to read the line sensors (input) and to produce useful motion (output).  The first case of autonomous behaviour.  Debugging robot behaviours may be a challenge (e.g., "this isn't doing what I expected" might not be just a software problem). <br><a href="https://github.com/paulodowd/EMATM0054_22-23/blob/main/Labsheets/Core/L4_ExercisesOnly.md">(Link to Exercises Only)</a> |
@@ -41,9 +41,28 @@ Start Here: <a href="https://github.com/paulodowd/EMATM0054_22-23/blob/main/Labs
 | [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/paulodowd/EMATM0054_22-23/blob/main/Labsheets/Core/L6_Odometry.ipynb) | **Labsheet 6**: Odometry | 4 hours  | Relatively straight-forward programming to use the wheel encoders and to estimate the robot position.  Some time will need to be spent to understand and calibrate out error. <br><a href="https://github.com/paulodowd/EMATM0054_22-23/blob/main/Labsheets/Core/L6_ExercisesOnly.md">(Link to Exercises Only)</a> |
 | [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/paulodowd/EMATM0054_22-23/blob/main/Labsheets/Core/L7_PID.ipynb) | **Labsheet 7**: PID | 6 hours  | Relatively straight-forward programming to implement a PID controller for wheel speed control. However, this can be difficult to debug and the work must be conducted slowly and systematically. <br><a href="https://github.com/paulodowd/EMATM0054_22-23/blob/main/Labsheets/Core/L7_ExercisesOnly.md">(Link to Exercises Only)</a> |
   
- 
+ https://github.com/
 
+https://github.com/
+https://github.com
+https://github.com/paulodowd/EMATM0054_22-23/blob/main/Labsheets/Supp/SL2_ProximitySensor.ipynb
+https://github.com/paulodowd/EMATM0054_22-23/blob/main/Labsheets/Supp/SL3_InertialSensors.ipynb
+https://github.com/
+https://github.com/
+https://github.com/
+https://github.com/paulodowd/EMATM0054_22-23/blob/main/Labsheets/Supp/SL7_Serial_Input.ipynb
 ## Supplementary Labsheets (Assessment 2)
+
+|  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;            | Labsheet Title | Description |
+|---------------|----------------|----------------|-------------|
+| [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/paulodowd/EMATM0054_22-23/blob/main/Labsheets/Supp/SL0_MeasuringBatteryVoltage.ipynb) | SL0: Battery Voltage | How to read the battery voltage of your 3Pi+. |
+| [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/paulodowd/EMATM0054_22-23/blob/main/Labsheets/Supp/SL1_InterruptsAndTimers.ipynb) | SL1: Interrupts and Timers | How to configure a precise timer to run code automatically. |
+| [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/paulodowd/EMATM0054_22-23/blob/main/Labsheets/Supp/SL2_BumpSensors.ipynb) | SL2: Bump Sensors | How to read the bump sensors. <br> |
+| [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/paulodowd/EMATM0054_22-23/blob/main/Labsheets/Supp/SL3_InertialSensors.ipynb) | SL3: Inertial Sensors |  How to read the Gyro, Accelerometer and Magnetometer sensors. <br> |
+| [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/paulodowd/EMATM0054_22-23/blob/main/Labsheets/Supp/SL4_NonVolatileMemory.ipynbb) | SL4: Non-Volatile Memory |  How to read and write data into memory which persists when the robot is powered off. <br>|
+| [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/paulodowd/EMATM0054_22-23/blob/main/Labsheets/Supp/SL5_RetrieveSerialData.ipynb) | SL5: Retrieving Data | How to plug in a USB cable and retrieve data without resetting your robot. <br> |
+| [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/paulodowd/EMATM0054_22-23/blob/main/Labsheets/Supp/SL6_PlottingResults.ipynb) | SL6: Graphing Results | Example Python/Colab code to plot various graphs for Assessment 2. <br> |
+| [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/paulodowd/EMATM0054_22-23/blob/main/Labsheets/Supp/SL7_Serial_Input.ipynb) | SL7: Serial Input |  How to use the Serial interface to provide input to your robot. <br>|
 
 ## Assessment 1 Video Demonstration
 
