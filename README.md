@@ -15,6 +15,15 @@ As a 20 Credit unit of study, you are expected to **invest 16 hours per week** t
 </p>
 
 
+## Assessment 1 Solution
+
+Core Labsheets are provided below, which will help you develop the core components of your solution for Assessment 1 Line Following Challenge.  However, you must integrate these core components into a final solution.  A block diagram is provided below to act as a guide, which will be discussed in the lecture sessions.  This block diagram illustrates the essential flow of information in the system, and how the system exhibits intelligent autonomous behaviour.
+
+<p align="center">
+<a href="https://github.com/paulodowd/EMATM0054_22-23/blob/main/Images/SystemBlockDiagram.png?raw=true"><img src=https://github.com/paulodowd/EMATM0054_22-23/blob/main/Images/SystemBlockDiagram.png?raw=true></a>
+</p>
+
+
 ## Core Labsheets (Assessment 1)
 
 It is recommended you read through all Labsheets before you start, and then decide on which areas you need to focus on.  If you have prior experience programming, there may be areas you can skip.  
@@ -39,10 +48,7 @@ Start Here: <a href="https://github.com/paulodowd/EMATM0054_22-23/blob/main/Labs
 ## Assessment 1 Video Demonstration
 
 
-## System Block Diagram
-<p align="center">
-<a href="https://github.com/paulodowd/EMATM0054_22-23/blob/main/Images/SystemBlockDiagram.png?raw=true"><img src=https://github.com/paulodowd/EMATM0054_22-23/blob/main/Images/SystemBlockDiagram.png?raw=true></a>
-</p>
+
 
 
 ## A2 Experiment Ideas
