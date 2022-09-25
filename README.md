@@ -17,6 +17,8 @@ As a 20 Credit unit of study, you are expected to **invest 16 hours per week** t
 
 ## Core Labsheets (Assessment 1)
 
+It is recommended you read through all Labsheets before you start, and then decide on which areas you need to focus on.  If you have prior experience programming, there may be areas you can skip.  
+
 Start Here: <a href="https://github.com/paulodowd/EMATM0054_22-23/blob/main/Labsheets/Core/L0_Troubleshooting.md"> FAQ / Trouble Shooting</a><br>
 
 |  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;            | Labsheet Title | Estimated Time | Description |
