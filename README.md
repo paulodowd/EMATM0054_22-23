@@ -1,11 +1,6 @@
 # Robotic Systems: EMATM0054_22-23
 Teaching Materials for Robotic Systems EMATM0054 AY 2022-2023
 
-1. <a href="">Suggested Timeline</a>
-2. <a href="">Core Labsheets</a> (weeks 1 - 6)
-3. <a href="">Supplementary Labsheets</a>
-4. <a href="">A2 Experiment Ideas</a> (weeks 6 - 11)
-
 ## Suggested Timeline
 
 As a 20 Credit unit of study, you are expected to **invest 16 hours per week** to use the Core Labsheets to complete Assessment 1 Line Following Challenge.  For example, you could structure your time into two 8 hour days per week, or four 4 hour sessions of work.  **In general, it is recommended you focus for long blocks of time when learning to program a robot**.  It is likely you will fail Assessment 1 if you only work in the 2 hour laboratory sessions.  Use the laboratory sessions to discuss with the teaching staff problems and challenges that you have discovered during the week.  
@@ -14,7 +9,6 @@ As a 20 Credit unit of study, you are expected to **invest 16 hours per week** t
 <img src="https://github.com/paulodowd/EMATM0054_22-23/blob/main/Images/TimeLine.png?raw=true">
 </p>
 
-
 ## Assessment 1 Solution
 
 Core Labsheets are provided below, which will help you develop the core components of your solution for Assessment 1 Line Following Challenge.  However, you must integrate these core components into a final solution.  A block diagram is provided below to act as a guide, which will be discussed in the lecture sessions.  This block diagram illustrates the essential flow of information in the system, and how the system exhibits intelligent autonomous behaviour.
@@ -22,6 +16,11 @@ Core Labsheets are provided below, which will help you develop the core componen
 <p align="center">
 <a href="https://github.com/paulodowd/EMATM0054_22-23/blob/main/Images/SystemBlockDiagram.png?raw=true"><img src=https://github.com/paulodowd/EMATM0054_22-23/blob/main/Images/SystemBlockDiagram.png?raw=true></a>
 </p>
+
+## Assessment 1 Video Example
+
+[![Video Example of a solution to Assessment 1](https://img.youtube.com/vi/IbfQaGqX-YU/0.jpg)](https://youtu.be/IbfQaGqX-YU)
+
 
 
 ## Core Labsheets (Assessment 1)
