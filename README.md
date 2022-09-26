@@ -19,8 +19,9 @@ Core Labsheets are provided below, which will help you develop the core componen
 
 ## Assessment 1 Video Example
 
+<p align="center">
 [![Video Example of a solution to Assessment 1](https://img.youtube.com/vi/IbfQaGqX-YU/0.jpg)](https://youtu.be/IbfQaGqX-YU)
-
+</p>
 
 
 ## Core Labsheets (Assessment 1)
