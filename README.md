@@ -28,6 +28,8 @@ Core Labsheets are provided below, which will help you develop the core componen
 
 It is recommended you read through all Labsheets before you start, and then decide on which areas you need to focus on.  If you have prior experience programming, there may be areas you can skip.  
 
+You may wish to use the code template available on this <a href="https://github.com/paulodowd/EMATM0054_22-23/tree/main/3PI_CodeStub">github</a>, called `Labsheet_X`, and create copies replacing the X with the number of the labsheet you are currently working on.  This is the simplest way to keep versions of your code.  
+
 Start Here: <a href="https://github.com/paulodowd/EMATM0054_22-23/blob/main/Labsheets/Core/L0_Troubleshooting.md"> FAQ / Trouble Shooting</a><br>
 
 |  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;            | Labsheet Title | Estimated Time | Description |
