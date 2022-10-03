@@ -65,7 +65,7 @@ Start Here: <a href="https://github.com/paulodowd/EMATM0054_22-23/blob/main/Labs
 
 ## A2 Experiment Ideas
 
- [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/paulodowd/EMATM0054_22-23/blob/main/Labsheets/Misc/Previous_Projects.ipynb) Previous Project, List of Abstracts
+ [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/paulodowd/EMATM0054_22-23/blob/main/Labsheets/Misc/Previous_Projects.ipynb) Previous Projects, List of Abstracts
 <br><br>
 
 <a href="">Example Reports</a>
