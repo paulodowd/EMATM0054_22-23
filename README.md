@@ -19,8 +19,9 @@ Core Labsheets are provided below, which will help you develop the core componen
 
 ## Assessment 1 Video Example
 
+The following video follows the assessment specification for recording the performance of your robot for Assessment 1.  In this video, the solution would achieve a final mark of 95%, by completing objectives 1-7, 8b & 9. 
 
-[![Video Example of a solution to Assessment 1](https://img.youtube.com/vi/IbfQaGqX-YU/0.jpg)](https://youtu.be/IbfQaGqX-YU)
+[![Video Example of a solution to Assessment 1](https://img.youtube.com/vi/0Ll-_fWrx-U/0.jpg)](https://youtu.be/0Ll-_fWrx-U)
 
 
 
@@ -28,18 +29,20 @@ Core Labsheets are provided below, which will help you develop the core componen
 
 It is recommended you read through all Labsheets before you start, and then decide on which areas you need to focus on.  If you have prior experience programming, there may be areas you can skip.  
 
+You may wish to use the code template available on this <a href="https://github.com/paulodowd/EMATM0054_22-23/tree/main/3PI_CodeStub">github</a>, called `Labsheet_X`, and create copies replacing the X with the number of the labsheet you are currently working on.  This is the simplest way to keep versions of your code.  
+
 Start Here: <a href="https://github.com/paulodowd/EMATM0054_22-23/blob/main/Labsheets/Core/L0_Troubleshooting.md"> FAQ / Trouble Shooting</a><br>
 
 |  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;            | Labsheet Title | Estimated Time | Description |
 |---------------|----------------|----------------|-------------|
 | [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/paulodowd/EMATM0054_22-23/blob/main/Labsheets/Core/L0_Troubleshooting.ipynb) | FAQ / TroubleShooting | n/a | Review common problems and solutions |
-| [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/paulodowd/EMATM0054_22-23/blob/main/Labsheets/Core/L1_MeetThe3PI.ipynb) | **Labsheet 1**: Getting Started, Uploading, Debugging | 2 hours | Very basic exercises to familiarise with coding and the 3Pi+ robot. <br> |
-| [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/paulodowd/EMATM0054_22-23/blob/main/Labsheets/Core/L2_Motors.ipynb) | **Labsheet 2**: Motors | 4 hours | Exercises to get your robot moving, steps to be confident that your code will behave predictably, and writing a Class. <br> |
-| [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/paulodowd/EMATM0054_22-23/blob/main/Labsheets/Core/L3_LineSensors.ipynb) | **Labsheet 3**: Line Sensors | 6 hours | Incremental exercises to get the line sensors working.  The first difficult programming exercise in terms of logic and iteration. <br> |
-| [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/paulodowd/EMATM0054_22-23/blob/main/Labsheets/Core/L4_LineFollowing.ipynb) | **Labsheet 4**: Line Following | 4 hours  | Exercises to read the line sensors (input) and to produce useful motion (output).  The first case of autonomous behaviour.  Debugging robot behaviours may be a challenge (e.g., "this isn't doing what I expected" might not be just a software problem). <br> |
-| [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/paulodowd/EMATM0054_22-23/blob/main/Labsheets/Core/L5_FiniteStateMachine.ipynb) | **Labsheet 5**: Finite State Machine | 0.5 hours | Very easy - mostly information.  How to get your robot to automatically switch between different behaviours to solve more complicated tasks. <br> |
-| [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/paulodowd/EMATM0054_22-23/blob/main/Labsheets/Core/L6_Odometry.ipynb) | **Labsheet 6**: Odometry | 4 hours  | Relatively straight-forward programming to use the wheel encoders and to estimate the robot position.  Some time will need to be spent to understand and calibrate out error. <br> |
-| [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/paulodowd/EMATM0054_22-23/blob/main/Labsheets/Core/L7_PID.ipynb) | **Labsheet 7**: PID | 6 hours  | Relatively straight-forward programming to implement a PID controller for wheel speed control. However, this can be difficult to debug and the work must be conducted slowly and systematically. <br> |
+| [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/paulodowd/EMATM0054_22-23/blob/main/Labsheets/Core/L1_MeetThe3PI.ipynb) | **Labsheet 1**: Getting Started, Uploading, Debugging | 2 hours | Very basic exercises to familiarise with coding and the 3Pi+ robot. <br><a href="https://github.com/paulodowd/EMATM0054_22-23/blob/main/Labsheets/Core/L1_ExercisesOnly.md">(Exercises Only)</a><br><a href="https://colab.research.google.com/github/paulodowd/EMATM0054_22-23/blob/main/Labsheets/Core/LabSheet1_Responses.ipynb">(Exercise Responses)</a> |
+| [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/paulodowd/EMATM0054_22-23/blob/main/Labsheets/Core/L2_Motors.ipynb) | **Labsheet 2**: Motors | 4 hours | Exercises to get your robot moving, steps to be confident that your code will behave predictably, and writing a Class. <br><a href="https://github.com/paulodowd/EMATM0054_22-23/blob/main/Labsheets/Core/L2_ExercisesOnly.md">(Exercises Only)</a> |
+| [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/paulodowd/EMATM0054_22-23/blob/main/Labsheets/Core/L3_LineSensors.ipynb) | **Labsheet 3**: Line Sensors | 6 hours | Incremental exercises to get the line sensors working.  The first difficult programming exercise in terms of logic and iteration. <br><a href="https://github.com/paulodowd/EMATM0054_22-23/blob/main/Labsheets/Core/L3_ExercisesOnly.md">(Exercises Only)</a> |
+| [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/paulodowd/EMATM0054_22-23/blob/main/Labsheets/Core/L4_LineFollowing.ipynb) | **Labsheet 4**: Line Following | 4 hours  | Exercises to read the line sensors (input) and to produce useful motion (output).  The first case of autonomous behaviour.  Debugging robot behaviours may be a challenge (e.g., "this isn't doing what I expected" might not be just a software problem). <br><a href="https://github.com/paulodowd/EMATM0054_22-23/blob/main/Labsheets/Core/L4_ExercisesOnly.md">(Exercises Only)</a> |
+| [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/paulodowd/EMATM0054_22-23/blob/main/Labsheets/Core/L5_FiniteStateMachine.ipynb) | **Labsheet 5**: Finite State Machine | 0.5 hours | Very easy - mostly information.  How to get your robot to automatically switch between different behaviours to solve more complicated tasks. <br><a href="https://github.com/paulodowd/EMATM0054_22-23/blob/main/Labsheets/Core/L5_ExercisesOnly.md">(Exercises Only)</a> |
+| [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/paulodowd/EMATM0054_22-23/blob/main/Labsheets/Core/L6_Odometry.ipynb) | **Labsheet 6**: Odometry | 4 hours  | Relatively straight-forward programming to use the wheel encoders and to estimate the robot position.  Some time will need to be spent to understand and calibrate out error. <br><a href="https://github.com/paulodowd/EMATM0054_22-23/blob/main/Labsheets/Core/L6_ExercisesOnly.md">(Exercises Only)</a> |
+| [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/paulodowd/EMATM0054_22-23/blob/main/Labsheets/Core/L7_PID.ipynb) | **Labsheet 7**: PID | 6 hours  | Relatively straight-forward programming to implement a PID controller for wheel speed control. However, this can be difficult to debug and the work must be conducted slowly and systematically. <br><a href="https://github.com/paulodowd/EMATM0054_22-23/blob/main/Labsheets/Core/L7_ExercisesOnly.md">(Exercises Only)</a> |
   
 
 ## Supplementary Labsheets (Assessment 2)
@@ -55,7 +58,6 @@ Start Here: <a href="https://github.com/paulodowd/EMATM0054_22-23/blob/main/Labs
 | [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/paulodowd/EMATM0054_22-23/blob/main/Labsheets/Supp/SL6_PlottingResults.ipynb) | SL6: Graphing Results | Example Python/Colab code to plot various graphs for Assessment 2. <br> |
 | [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/paulodowd/EMATM0054_22-23/blob/main/Labsheets/Supp/SL7_Serial_Input.ipynb) | SL7: Serial Input |  How to use the Serial interface to provide input to your robot. <br>|
 
-## Assessment 1 Video Demonstration
 
 
 
@@ -63,8 +65,9 @@ Start Here: <a href="https://github.com/paulodowd/EMATM0054_22-23/blob/main/Labs
 
 ## A2 Experiment Ideas
 
-<a href="">List of Previous Abstracts</a>
+ [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/paulodowd/EMATM0054_22-23/blob/main/Labsheets/Misc/Previous_Projects.ipynb) Previous Projects, List of Abstracts
 <br><br>
+
 <a href="">Example Reports</a>
 <br><br>
 <a href="">Example A2 Feedback</a>

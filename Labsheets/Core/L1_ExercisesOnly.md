@@ -2,7 +2,7 @@
 
 <br><br><br><br>
 
-## Exercise 1: Pololu 3Pi+ (10 minutes)
+## Exercise 1: Pololu 3Pi+ 
 
 <p align="center">
 <br>
@@ -48,7 +48,7 @@
 <hr>
 <br><br><br><br>
 
-## Exercise 3: Using Variables (10 minutes)
+## Exercise 3: Using Variables 
 
 1. Add code to the main loop of the Blink example which stops the LED from flashing after 10 flashes.
     - **Help:** you will need to use an `if()` conditional statement (selection) to check the status of a variable you create to count up to 10.  You can think of this as a way to branch your code (go one direction or another).  As a template, you might want to structure your code like:
@@ -71,7 +71,7 @@ if( my_count < 10 ) {
 <hr>
 <br><br><br><br>
 
-## Exercise 4: Using Functions (30 minutes)
+## Exercise 4: Using Functions
 
 1. Write a function to rapidly toggle the buzzer on your 3Pi+, so that we can hear it beep:
   - Write your function so that everytime it is called the buzzer switches on and then off.  Use `digitalWrite()` to achieve this. 
@@ -116,7 +116,7 @@ void beep( int toggle_duration ) {
 <br><br><br><br>
 
 
-## Exercise 5: Serial Output (5 minutes)
+## Exercise 5: Serial Output
 
 1. Intergrate the above example code with your work from Exercise 4.  Report the current `toggle_duration` being used in your beep function for the buzzer.
   - **Help:** If you do not include a `newline` in your Serial print statement, the monitor may not update meaning you will not see anything.  You may see a long stream of numbers running across the Serial Monitor.  There are two ways to include a `newline`:

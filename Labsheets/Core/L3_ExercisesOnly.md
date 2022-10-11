@@ -3,7 +3,7 @@
 <hr>
 <br><br><br><br>
 
-## Exercise 1: Setup (15 minutes)
+## Exercise 1: Setup 
 
 To begin with, put aside your previous work with the 3Pi+.  When we are first developing for new hardware, we want to keep the process as simple and as error free as possible.  Therefore, for now we do not need any code relating to the operation of the motors (Labshseet 2).  
 
@@ -33,7 +33,7 @@ In this labsheet, we will only work with the 3 central line sensors beneath the 
 <hr>
 <br><br><br><br>
 
-## Exercise 2: Sensor Validation (30 minutes)
+## Exercise 2: Sensor Validation 
 
 
 1. Test your knowledge:
@@ -140,7 +140,7 @@ It is important to first validate that the example above works on your 3Pi+.  Us
 <hr>
 <br><br><br><br>
 
-## Exercise 3: Improving the Example (30 minutes)
+## Exercise 3: Improving the Example 
 
 The example code provided above has significant room for improvement.  For now, we will continue working with just 1 sensor.  
 
@@ -270,7 +270,7 @@ void readLineSensor() {
 <hr>
 <br><br><br><br>
 
-## Exercise 4: Implementing Multiple Sensors (1 hour)
+## Exercise 4: Implementing Multiple Sensors
 
 
 
@@ -483,7 +483,7 @@ void loop() {
 <hr>
 <br><br><br><br>
 
-## Exercise 5: Refactor (30mins)
+## Exercise 5: Refactor 
 
 At this stage, you should now have a number of variables and processes all related to the operation of your ground sensors (line sensors).  Similar to developing code for the motors, this is likely spread across:
 - `global` scope
@@ -509,7 +509,7 @@ At this stage, you should now have a number of variables and processes all relat
 <hr>
 <br><br><br><br>
 
-## Exercise 6: Schedule the Line Sensor Read (20 minutes)
+## Exercise 6: Schedule the Line Sensor Read
 
 1. **Decompose the Problem:** Write a very short program to test how fast `loop()` operates with a minimum of code and without any calls to `delay()`:  
   - use `micros()` and calculate the elapsed time, and report this back to your computer Serial Monitor using `Serial.print()`.
