@@ -19,8 +19,9 @@ Core Labsheets are provided below, which will help you develop the core componen
 
 ## Assessment 1 Video Example
 
+The following video follows the assessment specification for recording the performance of your robot for Assessment 1.  In this video, the solution would achieve a final mark of 95%, by completing objectives 1-7, 8b & 9. 
 
-[![Video Example of a solution to Assessment 1](https://img.youtube.com/vi/IbfQaGqX-YU/0.jpg)](https://youtu.be/IbfQaGqX-YU)
+[![Video Example of a solution to Assessment 1](https://img.youtube.com/vi/0Ll-_fWrx-U/0.jpg)](https://youtu.be/0Ll-_fWrx-U)
 
 
 
@@ -57,7 +58,6 @@ Start Here: <a href="https://github.com/paulodowd/EMATM0054_22-23/blob/main/Labs
 | [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/paulodowd/EMATM0054_22-23/blob/main/Labsheets/Supp/SL6_PlottingResults.ipynb) | SL6: Graphing Results | Example Python/Colab code to plot various graphs for Assessment 2. <br> |
 | [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/paulodowd/EMATM0054_22-23/blob/main/Labsheets/Supp/SL7_Serial_Input.ipynb) | SL7: Serial Input |  How to use the Serial interface to provide input to your robot. <br>|
 
-## Assessment 1 Video Demonstration
 
 
 
