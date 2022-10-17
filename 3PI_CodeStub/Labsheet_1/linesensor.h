@@ -1,3 +1,4 @@
+#include "Arduino.h"
 // this #ifndef stops this file
 // from being included mored than
 // once by the compiler.
@@ -34,8 +35,20 @@ public:
     pinMode(LS_CENTRE_PIN, INPUT);
     pinMode(LS_RIGHT_PIN, INPUT);
 
-    //Set Emit Pin High
-    digitalWrite(EMIT, HIGH);
+
+    //Set Emit Pin off to save battery
+    IREmitOff();
+  }
+
+  void IREmitOn() {
+    //IREmitter Pin On
+    pinMode(EMIT, OUTPUT);
+    digitalWrite(EMIT,HIGH);
+  }
+
+  void IREmitOff() {
+    //IREmitter Pin Off
+    pinMode(EMIT, INPUT);
   }
 
   void chargeCapacitors() {
@@ -62,6 +75,7 @@ public:
 
     initialiseLineSensor();
     chargeCapacitors();
+    IREmitOn(); //Set the IREmitter pin on 
 
 
     // We still need to record the start time.

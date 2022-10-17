@@ -8,12 +8,14 @@
 #define BUZZER_PIN 6  //Pin to activate buzzer
 
 //Global Definitions of time intervals
-#define LINE_SENSOR_UPDATE 1000
+#define LINE_SENSOR_UPDATE 100
 #define MOTOR_UPDATE 2000
 
 
 
 int pitch;
+unsigned long ls_ts;
+unsigned long motor_ts;
 
 Motors_c motors;
 LineSensor_c lineSensor;
@@ -36,6 +38,10 @@ void setup() {
   digitalWrite(BUZZER_PIN, LOW);
 
   pitch = 100;
+  
+  ls_ts = millis();
+  motor_ts = millis();
+
 }
 
 // put your main code here, to run repeatedly:
@@ -64,21 +70,30 @@ void loop() {
   // of loop for coming calucations
   //  ( _ts = "time-stamp" )
   unsigned long current_ts = millis();
-  unsigned long ls_ts;
-  unsigned long motor_ts;
+  unsigned long elapsed_t;
+  
+
 
   // Run our line sensor update
   // every 100ms (10hz).
   // Tracking time for the line sensor (ls)
-  int elapsed_t = current_ts - ls_ts;
+  elapsed_t = current_ts - ls_ts;
+  //Serial.print(" Elapsed: ");
+  //Serial.print(elapsed_t);
   if (elapsed_t > LINE_SENSOR_UPDATE) {
 
     // Conduct a read of the line sensors
     lineSensor.parallelSensorRead();
+    motors.stopMotors();
+    motors.leftReverse(20);
+    motors.rightReverse(20);
+
 
     // Record when this execution happened.
     // for future iterations of loop()
     ls_ts = millis();
+    Serial.print(" LS: ");
+    Serial.print(ls_ts);
   }
 
   // Just to test this process:
@@ -89,14 +104,19 @@ void loop() {
   if (elapsed_t > MOTOR_UPDATE) {
     // Toggle motor direction
     // ...
+    
 
     // Write motor direction and
     // pwm to motors.
     // ...
+    motors.leftForward(20);
+    motors.rightForward(20);
 
     // Record when this execution happened
     // for future iterations of loop()
     motor_ts = millis();
+    Serial.print(" Motor: ");
+    Serial.print(motor_ts);
   }
   
 
