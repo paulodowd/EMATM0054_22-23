@@ -14,10 +14,12 @@
 #define REV HIGH
 
 
-
 // Class to operate the motor(s).
 class Motors_c {
   public:
+
+    unsigned int powerLeft;
+    unsigned int powerRight; 
 
     // Constructor, must exist.
     Motors_c() {
@@ -38,18 +40,22 @@ class Motors_c {
     // your motor(s)
     // ...
 
-    void leftForward(int power){
-      analogWrite(LEFT_MOTOR, power);
-      }
-    void rightForward(int power){
-      analogWrite(RIGHT_MOTOR, power);
+    void setPower(int powerLeftValue, int powerRightValue){
+    powerLeft = powerLeftValue;
+    powerRight = powerRightValue;
     }
-    void leftReverse(int power){
-      analogWrite(LEFT_MOTOR,power);
+    void leftForward(){
+      analogWrite(LEFT_MOTOR, powerLeft);
+      }
+    void rightForward(){
+      analogWrite(RIGHT_MOTOR, powerRight);
+    }
+    void leftReverse(){
+      analogWrite(LEFT_MOTOR,powerLeft);
       digitalWrite(LEFT_DIRECTION, REV);
       }
-    void rightReverse(int power){
-      analogWrite(RIGHT_MOTOR,power);
+    void rightReverse(){
+      analogWrite(RIGHT_MOTOR,powerRight);
       digitalWrite(RIGHT_DIRECTION, REV);
       }
     void stopMotors(){

@@ -8,8 +8,8 @@
 #define BUZZER_PIN 6  //Pin to activate buzzer
 
 //Global Definitions of time intervals
-#define LINE_SENSOR_UPDATE 100
-#define MOTOR_UPDATE 2000
+#define LINE_SENSOR_UPDATE 10
+#define MOTOR_UPDATE 20
 
 
 
@@ -84,16 +84,16 @@ void loop() {
 
     // Conduct a read of the line sensors
     lineSensor.parallelSensorRead();
-    motors.stopMotors();
-    motors.leftReverse(20);
-    motors.rightReverse(20);
+    //motors.stopMotors();
+    //motors.leftReverse(20);
+    //motors.rightReverse(20);
 
 
     // Record when this execution happened.
     // for future iterations of loop()
     ls_ts = millis();
-    Serial.print(" LS: ");
-    Serial.print(ls_ts);
+    //Serial.print(" LS: ");
+    //Serial.print(ls_ts);
   }
 
   // Just to test this process:
@@ -109,14 +109,15 @@ void loop() {
     // Write motor direction and
     // pwm to motors.
     // ...
-    motors.leftForward(20);
-    motors.rightForward(20);
+    motors.setPower(20,50);
+    motors.leftForward();
+    motors.rightForward();
 
     // Record when this execution happened
     // for future iterations of loop()
     motor_ts = millis();
-    Serial.print(" Motor: ");
-    Serial.print(motor_ts);
+    //Serial.print(" Motor: ");
+    //Serial.print(motor_ts);
   }
   
 
