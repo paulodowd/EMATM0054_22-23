@@ -25,6 +25,15 @@ int timeout;
 class LineSensor_c {
 public:
 
+  // Multiple sensors, needs multiple places
+  // to store the measurement result.
+  // We follow the convention above to create
+  // another array to store 3 values.
+  unsigned long sensor_read[NB_LS_PINS];
+
+  float error;
+
+
   // Constructor, must exist.
   LineSensor_c() {
   }
@@ -43,7 +52,7 @@ public:
   void IREmitOn() {
     //IREmitter Pin On
     pinMode(EMIT, OUTPUT);
-    digitalWrite(EMIT,HIGH);
+    digitalWrite(EMIT, HIGH);
   }
 
   void IREmitOff() {
@@ -75,7 +84,7 @@ public:
 
     initialiseLineSensor();
     chargeCapacitors();
-    IREmitOn(); //Set the IREmitter pin on 
+    IREmitOn();  //Set the IREmitter pin on
 
 
     // We still need to record the start time.
@@ -89,7 +98,7 @@ public:
     // to store the measurement result.
     // We follow the convention above to create
     // another array to store 3 values.
-    unsigned long sensor_read[NB_LS_PINS];
+    //unsigned long sensor_read[NB_LS_PINS];
 
     //Set end time to 0, which is a flag for when the sensor has not finished
     for (which = 0; which < NB_LS_PINS; which++) {
@@ -176,6 +185,7 @@ public:
     for (which = 0; which < NB_LS_PINS; which++) {
       Serial.print(sensor_read[which]);
       Serial.print(", ");
+
     }  //end the for loop
     end_time = micros();
     elapsed_time = end_time - start_time;
@@ -183,6 +193,29 @@ public:
     Serial.print(elapsed_time);
     Serial.print("\n");
   }  //end the function
-};
 
+
+  void errorCalc() {
+
+      for (which = 0; which < NB_LS_PINS; which++) {
+
+      unsigned int centreWeight = sensor_read[1] * 0.5;
+
+      unsigned int wLeft = sensor_read[0] + centreWeight;
+      Serial.print("\n");
+      Serial.print("wLeft: ");
+      Serial.print(wLeft);
+      unsigned int wRight = sensor_read[2] + centreWeight;
+      Serial.print(" wRight: ");
+      Serial.print(wRight);
+
+      float error = wLeft - wRight;
+      Serial.print(" Error: ");
+      Serial.print(error);
+
+      //return error;
+    }  //end for loop
+  }//end function
+
+};  //end the class
 #endif

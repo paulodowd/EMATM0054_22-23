@@ -38,10 +38,9 @@ void setup() {
   digitalWrite(BUZZER_PIN, LOW);
 
   pitch = 100;
-  
+
   ls_ts = millis();
   motor_ts = millis();
-
 }
 
 // put your main code here, to run repeatedly:
@@ -71,7 +70,8 @@ void loop() {
   //  ( _ts = "time-stamp" )
   unsigned long current_ts = millis();
   unsigned long elapsed_t;
-  
+  float e_line;
+
 
 
   // Run our line sensor update
@@ -84,6 +84,8 @@ void loop() {
 
     // Conduct a read of the line sensors
     lineSensor.parallelSensorRead();
+    lineSensor.errorCalc();
+    //e_line = lineSensor.errorCalc();
     //motors.stopMotors();
     //motors.leftReverse(20);
     //motors.rightReverse(20);
@@ -104,12 +106,12 @@ void loop() {
   if (elapsed_t > MOTOR_UPDATE) {
     // Toggle motor direction
     // ...
-    
+
 
     // Write motor direction and
     // pwm to motors.
     // ...
-    motors.setPower(20,50);
+    motors.setPower(20, 50);
     motors.leftForward();
     motors.rightForward();
 
@@ -119,7 +121,7 @@ void loop() {
     //Serial.print(" Motor: ");
     //Serial.print(motor_ts);
   }
-  
+
 
 
 
