@@ -8,8 +8,8 @@
 #define BUZZER_PIN 6  //Pin to activate buzzer
 
 //Global Definitions of time intervals
-#define LINE_SENSOR_UPDATE 10
-#define MOTOR_UPDATE 20
+#define LINE_SENSOR_UPDATE 100
+#define MOTOR_UPDATE 2000
 
 
 
@@ -59,6 +59,7 @@ void loop() {
   // debug led on or off on the 3Pi+
   digitalWrite(LED_PIN, led_state);
 
+
   //beep (pitch);
 
   // pitch = pitch + 1;
@@ -71,35 +72,13 @@ void loop() {
   //  ( _ts = "time-stamp" )
   unsigned long current_ts = millis();
   unsigned long elapsed_t;
-  
-  float e_line;
-  e_line = lineSensor.errorCalc();
-
-  float turn_pwm; 
-  turn_pwm = 10;
-
-  turn_pwm = turn_pwm * e_line;
-
-  Serial.print(turn_pwm);
-  Serial.print("\n");
 
 
-  int leftPower = 0 - turn_pwm;
-  int rightPower = 0 + turn_pwm;
-
-  Serial.print(leftPower);
-  Serial.print(rightPower);
-
-  motors.setPower(leftPower, rightPower);
-  motors.leftForward();
-  motors.rightForward();
+  //float e_line = lineSensor.errorCalc();
 
 
-  
-
-  //e_line = lineSensor.errorCalc();
-  Serial.print("\n");
-  Serial.print(e_line);
+  //Serial.print("\n");
+  //Serial.print(e_line);
 
 
 
@@ -118,6 +97,27 @@ void loop() {
     //motors.leftReverse(20);
     //motors.rightReverse(20);
 
+    float e_line;
+    e_line = lineSensor.errorCalc();
+
+
+    float turn_pwm;
+    turn_pwm = 10;
+
+    turn_pwm = turn_pwm * e_line;
+
+    Serial.print(turn_pwm);
+    Serial.print("\n");
+
+
+    int leftPower = 0 - turn_pwm;
+    int rightPower = 0 + turn_pwm;
+    motors.setPower(leftPower, rightPower);
+
+    motors.leftForward();
+    motors.rightForward();
+
+
 
     // Record when this execution happened.
     // for future iterations of loop()
@@ -134,7 +134,6 @@ void loop() {
   if (elapsed_t > MOTOR_UPDATE) {
     // Toggle motor direction
     // ...
-
 
     // Write motor direction and
     // pwm to motors.

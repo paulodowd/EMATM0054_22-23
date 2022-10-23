@@ -242,5 +242,5 @@ public:
     // normalRight = normalRight* 0.0001;
 
   }  //end function
-};  //end the class
+};   //end the class
 #endif
