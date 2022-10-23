@@ -1,3 +1,4 @@
+#include "USBAPI.h"
 #include "Arduino.h"
 // this #ifndef stops this file
 // from being included mored than
@@ -8,7 +9,7 @@
 
 #define LS_LEFT_PIN A0
 #define LS_CENTRE_PIN A2
-#define LS_RIGHT_PIN A4
+#define LS_RIGHT_PIN A3
 #define EMIT 11
 
 // Define the max number of sensors to use.
@@ -24,6 +25,12 @@ int timeout;
 // Class to operate the linesensor(s).
 class LineSensor_c {
 public:
+
+  //Initialise timings
+  unsigned long elapsed_time;
+  unsigned long current_time;
+  unsigned long start_time;
+  unsigned long end_time;
 
   // Multiple sensors, needs multiple places
   // to store the measurement result.
@@ -88,10 +95,6 @@ public:
 
 
     // We still need to record the start time.
-    unsigned long elapsed_time;
-    unsigned long current_time;
-    unsigned long start_time;
-    unsigned long end_time;
     start_time = micros();
 
     // Multiple sensors, needs multiple places
@@ -181,41 +184,63 @@ public:
     }  // end of while( remaining > 0 )
 
     //Here we will print our sensor readings from left to right
-    Serial.print("Sensor readings L -> R: ");
+    //Serial.print("Sensor readings L -> R: ");
     for (which = 0; which < NB_LS_PINS; which++) {
-      Serial.print(sensor_read[which]);
-      Serial.print(", ");
+      //Serial.print(sensor_read[which]);
+      //Serial.print(", ");
 
     }  //end the for loop
     end_time = micros();
     elapsed_time = end_time - start_time;
-    Serial.print("Overall time: ");
-    Serial.print(elapsed_time);
-    Serial.print("\n");
+    //Serial.print("Overall time: ");
+    //Serial.print(elapsed_time);
+    //Serial.print("\n");
   }  //end the function
 
 
-  void errorCalc() {
+  float errorCalc() {
 
-      for (which = 0; which < NB_LS_PINS; which++) {
+    parallelSensorRead();
 
-      unsigned int centreWeight = sensor_read[1] * 0.5;
+    float left = sensor_read[0];
+    float centre = sensor_read[1];
+    float right = sensor_read[2];
+    float total = left + centre + right;
 
-      unsigned int wLeft = sensor_read[0] + centreWeight;
-      Serial.print("\n");
-      Serial.print("wLeft: ");
-      Serial.print(wLeft);
-      unsigned int wRight = sensor_read[2] + centreWeight;
-      Serial.print(" wRight: ");
-      Serial.print(wRight);
+    left = left / total;
+    centre = centre / total;
+    right = right / total;
 
-      float error = wLeft - wRight;
-      Serial.print(" Error: ");
-      Serial.print(error);
+    float normalCentre = centre * 0.5;
 
-      //return error;
-    }  //end for loop
-  }//end function
+    float wLeft = left + normalCentre;
+    //Serial.print("\n");
+    //Serial.print("wLeft: ");
+    //Serial.print(wLeft);
+    float wRight = right + normalCentre;
+    //Serial.print(" wRight: ");
+    //Serial.print(wRight);
 
+    float error = wLeft - wRight;
+    //Serial.print(" Error: ");
+    //Serial.print(error);
+
+    return error;
+
+    // float normalLeft = map(left, 500, 3000, 0, 10000);
+    // Serial.print(" Normal Left:  ");
+    // Serial.print(normalLeft);
+    // float normalCentre = map(centre, 450, 2400, 0, 10000);
+    // Serial.print(" Normal Centre:  ");
+    // Serial.print(normalCentre);
+    // float normalRight = map(right, 555, 2650, 0, 10000);
+    // Serial.print(" Normal Right :  ");
+    // Serial.print(normalRight);
+
+    // normalLeft = normalLeft* 0.0001;
+    // normalCentre = normalCentre* 0.00005;
+    // normalRight = normalRight* 0.0001;
+
+  }  //end function
 };  //end the class
 #endif

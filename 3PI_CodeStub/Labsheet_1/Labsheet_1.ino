@@ -17,6 +17,8 @@ int pitch;
 unsigned long ls_ts;
 unsigned long motor_ts;
 
+
+
 Motors_c motors;
 LineSensor_c lineSensor;
 
@@ -62,7 +64,6 @@ void loop() {
   // pitch = pitch + 1;
   // if(pitch > 1500) pitch = 100;
 
-
   // Serial.println (pitch);
 
   // Record the time of this execution
@@ -70,7 +71,35 @@ void loop() {
   //  ( _ts = "time-stamp" )
   unsigned long current_ts = millis();
   unsigned long elapsed_t;
+  
   float e_line;
+  e_line = lineSensor.errorCalc();
+
+  float turn_pwm; 
+  turn_pwm = 10;
+
+  turn_pwm = turn_pwm * e_line;
+
+  Serial.print(turn_pwm);
+  Serial.print("\n");
+
+
+  int leftPower = 0 - turn_pwm;
+  int rightPower = 0 + turn_pwm;
+
+  Serial.print(leftPower);
+  Serial.print(rightPower);
+
+  motors.setPower(leftPower, rightPower);
+  motors.leftForward();
+  motors.rightForward();
+
+
+  
+
+  //e_line = lineSensor.errorCalc();
+  Serial.print("\n");
+  Serial.print(e_line);
 
 
 
@@ -83,9 +112,8 @@ void loop() {
   if (elapsed_t > LINE_SENSOR_UPDATE) {
 
     // Conduct a read of the line sensors
-    lineSensor.parallelSensorRead();
-    lineSensor.errorCalc();
-    //e_line = lineSensor.errorCalc();
+    //lineSensor.parallelSensorRead();
+    //lineSensor.errorCalc();
     //motors.stopMotors();
     //motors.leftReverse(20);
     //motors.rightReverse(20);
@@ -111,9 +139,9 @@ void loop() {
     // Write motor direction and
     // pwm to motors.
     // ...
-    motors.setPower(20, 50);
-    motors.leftForward();
-    motors.rightForward();
+    //motors.setPower(20, 50);
+    //motors.leftForward();
+    //motors.rightForward();
 
     // Record when this execution happened
     // for future iterations of loop()
