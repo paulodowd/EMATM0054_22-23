@@ -102,18 +102,21 @@ void loop() {
 
 
     float turn_pwm;
-    turn_pwm = 10;
+    turn_pwm = 20;
 
     turn_pwm = turn_pwm * e_line;
 
     Serial.print(turn_pwm);
     Serial.print("\n");
+    
 
-
-    int leftPower = 0 - turn_pwm;
-    int rightPower = 0 + turn_pwm;
+    float leftPower = 20 - turn_pwm*3;
+    float rightPower = 20 + turn_pwm*3;
+    leftPower = int (leftPower);
+    rightPower = int (rightPower);
+    Serial.print(leftPower);
+    Serial.print(rightPower);
     motors.setPower(leftPower, rightPower);
-
     motors.leftForward();
     motors.rightForward();
 

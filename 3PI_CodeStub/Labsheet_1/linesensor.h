@@ -225,21 +225,9 @@ public:
     //Serial.print(" Error: ");
     //Serial.print(error);
 
+    //if (error = 0)
+
     return error;
-
-    // float normalLeft = map(left, 500, 3000, 0, 10000);
-    // Serial.print(" Normal Left:  ");
-    // Serial.print(normalLeft);
-    // float normalCentre = map(centre, 450, 2400, 0, 10000);
-    // Serial.print(" Normal Centre:  ");
-    // Serial.print(normalCentre);
-    // float normalRight = map(right, 555, 2650, 0, 10000);
-    // Serial.print(" Normal Right :  ");
-    // Serial.print(normalRight);
-
-    // normalLeft = normalLeft* 0.0001;
-    // normalCentre = normalCentre* 0.00005;
-    // normalRight = normalRight* 0.0001;
 
   }  //end function
 };   //end the class
