@@ -10,6 +10,8 @@
 #define LS_LEFT_PIN A0
 #define LS_CENTRE_PIN A2
 #define LS_RIGHT_PIN A3
+#define LEFT_MOST_PIN A11
+#define RIGHT_MOST_PIN A4
 #define EMIT 11
 
 // Define the max number of sensors to use.
@@ -214,18 +216,8 @@ public:
     float normalCentre = centre * 0.5;
 
     float wLeft = left + normalCentre;
-    //Serial.print("\n");
-    //Serial.print("wLeft: ");
-    //Serial.print(wLeft);
     float wRight = right + normalCentre;
-    //Serial.print(" wRight: ");
-    //Serial.print(wRight);
-
     float error = wLeft - wRight;
-    //Serial.print(" Error: ");
-    //Serial.print(error);
-
-    //if (error = 0)
 
     return error;
 
