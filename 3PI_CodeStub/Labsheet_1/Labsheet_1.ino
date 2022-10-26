@@ -15,10 +15,9 @@
 #define STATE_INITIAL 0
 #define STATE_DRIVE_FORWARD 1
 #define STATE_FOUND_LINE 2
-#define STATE_TURN_ON_LINE 3
-#define STATE_FOLLOW_LINE 4
-#define STATE_TURN_AROUND 5
-#define STATE_GAP 6
+#define STATE_FOLLOW_LINE 3
+// #define STATE_TURN_AROUND 5
+// #define STATE_GAP 6
 
 
 int state;
@@ -34,7 +33,6 @@ Motors_c motors;
 LineSensor_c lineSensor;
 
 boolean led_state;  // Variable to "remember" the state of the LED, and toggle it.
-boolean lineFound;
 
 // put your setup code here, to run once:
 void setup() {
@@ -56,7 +54,6 @@ void setup() {
 
   ls_ts = millis();
   motor_ts = millis();
-  lineFound = false;
 }
 
 // put your main code here, to run repeatedly:
@@ -69,9 +66,6 @@ void loop() {
   unsigned long elapsed_t;
 
 
-  Serial.print(state);
-  Serial.print("\n");
-
 
   //updateState;
 
@@ -79,25 +73,27 @@ void loop() {
   if (state == STATE_INITIAL) {
 
     motors.initialiseMotor();
-    state = STATE_DRIVE_FORWARD;
+    state == STATE_DRIVE_FORWARD;
 
   } else if (state == STATE_DRIVE_FORWARD) {
 
-    //driveForwards();
+    driveForwards();
     //STATE then changed to FOUND_LINE within the driveForwards function
 
   } else if (state = STATE_FOUND_LINE) {
 
     led_state = true;
-    state = STATE_FOLLOW_LINE;
+    state == STATE_FOLLOW_LINE;
 
   } else (state == STATE_FOLLOW_LINE);
   {
 
     lineFollowing();
 
-    state = STATE_DRIVE_FORWARD;
+    state == STATE_INITIAL;
   }
+
+  
 
 
 
@@ -112,7 +108,7 @@ void loop() {
   if (elapsed_t > LINE_SENSOR_UPDATE) {
 
     // Conduct a read of the line sensors
-    //lineFollowing();
+    lineSensor.parallelSensorRead();
 
     ls_ts = millis();
   }
@@ -137,29 +133,27 @@ void updateState() {}
 
 void driveForwards() {
 
-  lineFound = false;
-  lineSensor.parallelSensorRead();
-  motors.setPower(30, 30);
-  motors.leftForward();
-  motors.rightForward();
 
-  int centreSensor = lineSensor.sensor_read[1];
-  int leftSensor = lineSensor.sensor_read[0];
+  //lineSensor.parallelSensorRead();
+  int centreSensor = lineSensor.sensor_read[2];
+  Serial.print(centreSensor);
+  Serial.print("\n");
+
+  if (centreSensor <= 1500) {
+
+    motors.setPower(20, 20);
+    motors.leftForward();
+    motors.rightForward();
+   
+  
+  }
 
   if (centreSensor >= 1500) {
-    lineFound = true;
+
     motors.stopMotors();
-    motors.setPower(40, 40);
-    motors.leftForward();
-    motors.rightReverse();
-  // } if(lineFound = false){
+    state == STATE_FOUND_LINE;
 
-  //   if (leftSensor >= 1500)
-  //  // lineFound = true;
-  //   motors.stopMotors();
-  //    }//end if
-    }//end function
-
+  }  //end function
 }
 
 void lineFollowing() {
@@ -170,12 +164,12 @@ void lineFollowing() {
 
 
   float turn_pwm;
-  turn_pwm = 15;
+  turn_pwm = 20;
 
   turn_pwm = turn_pwm * e_line;
 
-  //Serial.print(turn_pwm);
-  //Serial.print("\n");
+  // Serial.print(turn_pwm);
+  // Serial.print("\n");
 
   float leftPower = 20 - turn_pwm;
   float rightPower = 20 + turn_pwm;

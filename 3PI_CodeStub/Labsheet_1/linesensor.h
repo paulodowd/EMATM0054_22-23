@@ -15,11 +15,11 @@
 #define EMIT 11
 
 // Define the max number of sensors to use.
-#define NB_LS_PINS 3
+#define NB_LS_PINS 5
 
 // We can create an array ("list") of sensors to check.  This becomes very useful to allow us to write code which iterates, rather than
 //needing to repeat lines of similar code. Note, we should match the number of entries to the max number of sensors we are reading.
-int ls_pin[NB_LS_PINS] = { LS_LEFT_PIN, LS_CENTRE_PIN, LS_RIGHT_PIN };
+int ls_pin[NB_LS_PINS] = { LEFT_MOST_PIN, LS_LEFT_PIN, LS_CENTRE_PIN, LS_RIGHT_PIN, RIGHT_MOST_PIN };
 
 int which;
 int timeout;
@@ -49,10 +49,11 @@ public:
   void initialiseLineSensor() {
     //Initialise Pins
     pinMode(EMIT, OUTPUT);
+    pinMode(LEFT_MOST_PIN, INPUT);
     pinMode(LS_LEFT_PIN, INPUT);
     pinMode(LS_CENTRE_PIN, INPUT);
     pinMode(LS_RIGHT_PIN, INPUT);
-
+    pinMode(RIGHT_MOST_PIN, INPUT);
 
     //Set Emit Pin off to save battery
     IREmitOff();
@@ -203,11 +204,15 @@ public:
   float errorCalc() {
 
     parallelSensorRead();
+    float farLeft = sensor_read[0];
+    float left = sensor_read[1];
+    float centre = sensor_read[2];
+    float right = sensor_read[3];
+    float farRight = sensor_read[4];
+    float total = farLeft + left + centre + right + farRight;
 
-    float left = sensor_read[0];
-    float centre = sensor_read[1];
-    float right = sensor_read[2];
-    float total = left + centre + right;
+    left = left + farLeft;
+    right = right + farRight;
 
     left = left / total;
     centre = centre / total;
