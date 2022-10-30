@@ -96,46 +96,58 @@ void loop() {
       Line = 1;
       break;
     case 1:
+
       //are all 3 sensors on white
-      lineFound = false;
       if (lineSensor.sensor_read[1] && lineSensor.sensor_read[2] && lineSensor.sensor_read[3] < 1500) {
-          if (lineFound = false) { 
+        if (lineFound == false) {
           driveForwards();
           Line = 2;
         }
       }
+      Line = 2;
       break;
     case 2:
-      //if all 3 sensors are black stop turn to the right
+      //if all 3 sensors are black stop turn to the left
       if (lineSensor.sensor_read[1] && lineSensor.sensor_read[2] && lineSensor.sensor_read[3] > 1500) {
-        if (lineFound = false) { 
+        if (lineFound == false) {
           turnOn();
-          //lineFound = true;
-          Line = 1;
+          lineFound = true;
+          Line = 3;
         }
       }
       Line = 3;
       break;
-    case 3:  //Line lost
-      //when the sensors have been all white for 3 seconds turn around 180 deg
-      if (lineSensor.sensor_read[0] && lineSensor.sensor_read[1] && lineSensor.sensor_read[2] && lineSensor.sensor_read[3] && lineSensor.sensor_read[4] < 1500) {
-         if (lineFound = true) {
-        lineLost = true;
-        linelost_ts = millis();
-        motors.stopMotors();
+    case 3:
+      //if all 3 sensors are black stop turn to the right
+      if (lineFound == true){
+        lineFollowing();
+        Line = 3;
       }
-    }
+      if (lineFound == false){
+      Line = 4;
+      }
+     // Line = 3;
+      break;
+    case 4:  //Line lost
+      //when the sensors have been all white for 3 seconds turn around 180 deg
+      // if (lineSensor.sensor_read[0] && lineSensor.sensor_read[1] && lineSensor.sensor_read[2] && lineSensor.sensor_read[3] && lineSensor.sensor_read[4] < 1500) {
+      //   if (lineFound == true) {
+      //     lineLost = true;
+      //     linelost_ts = millis();
+      //     motors.stopMotors();
+      //   }
+      // }
 
-  elapsed_t = linelost_ts;
+      // elapsed_t = linelost_ts;
 
-  if (elapsed_t > LINE_LOST_UPDATE) {
-      if (lineLost = true) {
-      turnAround();
-      linelost_ts = millis();
-    }
-  }
-  Line = 0;
-  break;
+      // if (elapsed_t > LINE_LOST_UPDATE) {
+      //   if (lineLost = true) {
+      //     turnAround();
+      //     linelost_ts = millis();
+      //   }
+      // }
+      Line = 0;
+      break;
   }
 }
 
@@ -157,32 +169,33 @@ void beep(int toggle_duration) {
 
 void driveForwards() {
 
-  motors.setPower(25, 25);
+  motors.setPower(20, 20);
   motors.leftForward();
   motors.rightForward();
 }
 
 void turnOn() {
   motors.stopMotors();
-  delay(5000);
-  motors.setPower(40, 0);
+  delay(2000);
+  motors.setPower(0, 20);
   motors.rightForward();
   motors.leftForward();
-  delay(2150);
+  delay(1500);
 }
 
 void turnAround() {
   motors.stopMotors();
   delay(2000);
-  motors.setPower(40, 40);
+  motors.setPower(20, 20);
   motors.leftForward();
   motors.rightReverse();
-  delay(2000);
+  delay(1500);
 }
+
 void lineFollowing() {
 
-  lineFound = false;
-
+  //lineFound = false;
+  
   float e_line;
   e_line = lineSensor.errorCalc();
 
@@ -190,9 +203,6 @@ void lineFollowing() {
   turn_pwm = 20;
 
   turn_pwm = turn_pwm * e_line;
-
-  // Serial.print(turn_pwm);
-  // Serial.print("\n");
 
   float leftPower = 20 - turn_pwm * 2;
   float rightPower = 20 + turn_pwm * 2;
@@ -203,11 +213,12 @@ void lineFollowing() {
   motors.rightForward();
 
   if (e_line < 0.1) {
-    if (lineSensor.sensor_read[2] > 1500 ){
-    lineFound = true;
+    if (lineSensor.sensor_read[2] > 1500) {
+        lineFound = true;
     }
   }
 }
+
 
 
 //off cuts of code to remeber
