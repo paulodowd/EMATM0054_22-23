@@ -10,7 +10,7 @@
 //Global Definitions of time intervals
 #define LINE_SENSOR_UPDATE 10
 #define MOTOR_UPDATE 20
-#define LINE_LOST_UPDATE 2000
+#define LINE_LOST_UPDATE 5000
 
 // //Declare my FSM
 // #define STATE_INITIAL 0
@@ -59,7 +59,7 @@ void setup() {
 
   ls_ts = millis();
   motor_ts = millis();
-  linelost_ts = millis();
+  //linelost_ts = millis();
 }
 
 // put your main code here, to run repeatedly:
@@ -82,12 +82,12 @@ void loop() {
 
     ls_ts = millis();
   }
-  elapsed_t = current_ts - motor_ts;
-  if (elapsed_t > MOTOR_UPDATE) {
+  // elapsed_t = current_ts - motor_ts;
+  // if (elapsed_t > MOTOR_UPDATE) {
 
 
-    motor_ts = millis();
-  }
+  //   motor_ts = millis();
+  // }
 
 
   switch (Line) {
@@ -126,172 +126,227 @@ void loop() {
       if (lineLost == true) {
         Line = 4;
       }
-      Line = 0;
+      Line = 4;
       break;
     case 4:  //Line lost
              //when the sensors have been all white for 3 seconds turn around 180 deg
-      if (lineLost == true){
+      if (lineLost == true) {
+
+        //lineFound = false;
+
+        Serial.print("Line Lost");
+        Serial.print("\n");
 
         linelost_ts = millis();
+        Serial.print(linelost_ts);
+        Serial.print("\n");
+        Serial.print(current_ts);
+        Serial.print("\n");
+
 
         driveForwards();
 
-        elapsed_t = linelost_ts;
+        elapsed_t = current_ts - linelost_ts;
+        Serial.print(elapsed_t);
+        Serial.print("\n");
 
-        if (elapsed_t > LINE_LOST_UPDATE) {
-            motors.stopMotors();
-            //turnAround();
-            //linelost_ts = millis();
+
+
+        // while (elapsed_t < LINE_LOST_UPDATE) {
+
+        //   driveForwards();
+
+          if (lineSensor.sensor_read[0] || lineSensor.sensor_read[1] || lineSensor.sensor_read[2] || lineSensor.sensor_read[3] || lineSensor.sensor_read[4] > 1500) {
+            lineFound = true;
+            Line = 3;
           }
-        }
+        //   break;
+        // }
+
+        //   while(elapsed_t > LINE_LOST_UPDATE) {
+        //     Serial.print("Stopped");
+        //     Serial.print("\n");
+        //     motors.stopMotors();
+        //     //turnAround();
+        //     //delay(10000);
+        //     // }else{
+        //     //   lineFound = true;
+        //     //   Line = 3;
+        //     break;
+        //   }
+         }
+   
+        Line = 0;
+        break;
+  }
+}
+
+
+
+
+
+
+
+
+
+  void beep(int toggle_duration) {
+    digitalWrite(BUZZER_PIN, HIGH);
+    delayMicroseconds(toggle_duration);
+    digitalWrite(BUZZER_PIN, LOW);
+    delayMicroseconds(toggle_duration);
+  }
+
+
+
+  void driveForwards() {
+
+    motors.setPower(20, 20);
+    motors.leftForward();
+    motors.rightForward();
+    Serial.print("drive forwards");
+    Serial.print("\n");
+  }
+
+  void turnOn() {
+    motors.stopMotors();
+    delay(1000);
+    motors.setPower(0, 20);
+    motors.rightForward();
+    motors.leftForward();
+    Serial.print("turning on");
+    Serial.print("\n");
+    delay(1500);
+  }
+
+  void turnAround() {
+    motors.stopMotors();
+    delay(2000);
+    motors.setPower(20, 20);
+    motors.leftForward();
+    motors.rightReverse();
+    delay(1500);
+  }
+
+  void lineFollowing() {
+
+    lineLost = false;
+
+    Serial.print("line Following");
+    Serial.print("\n");
+
+    // Serial.print(lineSensor.sensor_read[0]);
+    // Serial.print("\n");
+    // Serial.print(lineSensor.sensor_read[1]);
+    // Serial.print("\n");
+    // Serial.print(lineSensor.sensor_read[2]);
+    // Serial.print("\n");
+    // Serial.print(lineSensor.sensor_read[3]);
+    // Serial.print("\n");
+    // Serial.print(lineSensor.sensor_read[4]);
+    // Serial.print("\n");
+
+    float e_line;
+    e_line = lineSensor.errorCalc();
+
+    float turn_pwm;
+    turn_pwm = 20;
+
+    turn_pwm = turn_pwm * e_line;
+
+    float leftPower = 20 - turn_pwm * 2;
+    float rightPower = 20 + turn_pwm * 2;
+    leftPower = int(leftPower);
+    rightPower = int(rightPower);
+    motors.setPower(leftPower, rightPower);
+    motors.leftForward();
+    motors.rightForward();
+
+    if (e_line < 0.1) {
+      if (lineSensor.sensor_read[2] > 1500) {
+        lineFound = true;
       }
-      Line = 3;
-      break;
-  }
-}
-
-
-
-
-
-
-
-
-void beep(int toggle_duration) {
-  digitalWrite(BUZZER_PIN, HIGH);
-  delayMicroseconds(toggle_duration);
-  digitalWrite(BUZZER_PIN, LOW);
-  delayMicroseconds(toggle_duration);
-}
-
-
-
-void driveForwards() {
-
-  motors.setPower(20, 20);
-  motors.leftForward();
-  motors.rightForward();
-}
-
-void turnOn() {
-  motors.stopMotors();
-  delay(2000);
-  motors.setPower(0, 20);
-  motors.rightForward();
-  motors.leftForward();
-  delay(1500);
-}
-
-void turnAround() {
-  motors.stopMotors();
-  delay(2000);
-  motors.setPower(20, 20);
-  motors.leftForward();
-  motors.rightReverse();
-  delay(1500);
-}
-
-void lineFollowing() {
-
-  float e_line;
-  e_line = lineSensor.errorCalc();
-
-  float turn_pwm;
-  turn_pwm = 20;
-
-  turn_pwm = turn_pwm * e_line;
-
-  float leftPower = 20 - turn_pwm * 2;
-  float rightPower = 20 + turn_pwm * 2;
-  leftPower = int(leftPower);
-  rightPower = int(rightPower);
-  motors.setPower(leftPower, rightPower);
-  motors.leftForward();
-  motors.rightForward();
-
-  if (e_line < 0.1) {
-    if (lineSensor.sensor_read[2] > 1500) {
-      lineFound = true;
-    }
-    if (lineSensor.sensor_read[0] && lineSensor.sensor_read[1] && lineSensor.sensor_read[2] && lineSensor.sensor_read[3] && lineSensor.sensor_read[4] < 1500) {
-      lineLost = true;
+      if (lineSensor.sensor_read[0] && lineSensor.sensor_read[1] && lineSensor.sensor_read[2] && lineSensor.sensor_read[3] && lineSensor.sensor_read[4] < 1200) {
+        lineLost = true;
+      }
     }
   }
-}
 
 
-//off cuts of code to remeber
-
-// // We use the variable to set the
-// // debug led on or off on the 3Pi+
-// digitalWrite(LED_PIN, led_state);
-
-//beep (pitch);
-
-// pitch = pitch + 1;
-// if(pitch > 1500) pitch = 100;
-
-// Serial.println (pitch);
-
-// // Using an if statement to toggle a variable
-// // with each call of loop()
-// if (led_state == true) {
-//   led_state = false;
-// } else {
-//   led_state = true;
-// }
 
 
-// if (state == STATE_INITIAL) {
 
-//     motors.initialiseMotor();
-//     state = STATE_LOST_LINE;
+  //off cuts of code to remeber
 
-//   } else if (state = STATE_LOST_LINE) {
+  // // We use the variable to set the
+  // // debug led on or off on the 3Pi+
+  // digitalWrite(LED_PIN, led_state);
 
-//     motors.setPower(20, 20);
-//     motors.leftForward();
-//     motors.rightForward();
-//     Serial.print("driving");
+  //beep (pitch);
 
-//   if (lineSensor.sensor_read[1] v && lineSensor.sensor_read[2] && lineSensor.sensor_read[3] > 1500) {
-//       motors.setPower(0, 20);
-//       motors.leftForward();
-//       motors.rightForward();
-//       delay(1150);
-//       Serial.print("turned");
-//       lineFound = true;
-//       state = STATE_DRIVE_FORWARD;
-//       Serial.print(state);
-//       Serial.print("\n");
+  // pitch = pitch + 1;
+  // if(pitch > 1500) pitch = 100;
 
-//     } else if (state == STATE_DRIVE_FORWARD) {
-//       Serial.print(state);
-//       Serial.print("Driving Forward ");
-//       Serial.print("\n");
-//       motors.setPower(20, 20);
-//       motors.leftForward();
-//       motors.rightForward();
+  // Serial.println (pitch);
 
-//      }if (lineFound = true) {
-
-//         state = STATE_FOUND_LINE;
-//       }
-//       if (lineFound = false) {
-
-//         state = STATE_LOST_LINE;
+  // // Using an if statement to toggle a variable
+  // // with each call of loop()
+  // if (led_state == true) {
+  //   led_state = false;
+  // } else {
+  //   led_state = true;
+  // }
 
 
-//       }else if (state = STATE_FOUND_LINE)
+  // if (state == STATE_INITIAL) {
 
-//         led_state = true;
-//         state = STATE_FOLLOW_LINE;
+  //     motors.initialiseMotor();
+  //     state = STATE_LOST_LINE;
 
-//     } else if(state == STATE_FOLLOW_LINE){
+  //   } else if (state = STATE_LOST_LINE) {
 
-//       Serial.print(state);
-//       Serial.print("\n");
-//       lineFollowing();
-//       state = STATE_DRIVE_FORWARD;
-//     }
-//   }
+  //     motors.setPower(20, 20);
+  //     motors.leftForward();
+  //     motors.rightForward();
+  //     Serial.print("driving");
+
+  //   if (lineSensor.sensor_read[1] v && lineSensor.sensor_read[2] && lineSensor.sensor_read[3] > 1500) {
+  //       motors.setPower(0, 20);
+  //       motors.leftForward();
+  //       motors.rightForward();
+  //       delay(1150);
+  //       Serial.print("turned");
+  //       lineFound = true;
+  //       state = STATE_DRIVE_FORWARD;
+  //       Serial.print(state);
+  //       Serial.print("\n");
+
+  //     } else if (state == STATE_DRIVE_FORWARD) {
+  //       Serial.print(state);
+  //       Serial.print("Driving Forward ");
+  //       Serial.print("\n");
+  //       motors.setPower(20, 20);
+  //       motors.leftForward();
+  //       motors.rightForward();
+
+  //      }if (lineFound = true) {
+
+  //         state = STATE_FOUND_LINE;
+  //       }
+  //       if (lineFound = false) {
+
+  //         state = STATE_LOST_LINE;
+
+
+  //       }else if (state = STATE_FOUND_LINE)
+
+  //         led_state = true;
+  //         state = STATE_FOLLOW_LINE;
+
+  //     } else if(state == STATE_FOLLOW_LINE){
+
+  //       Serial.print(state);
+  //       Serial.print("\n");
+  //       lineFollowing();
+  //       state = STATE_DRIVE_FORWARD;
+  //     }
+  //   }
