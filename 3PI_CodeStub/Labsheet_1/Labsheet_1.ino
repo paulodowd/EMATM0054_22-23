@@ -10,7 +10,7 @@
 //Global Definitions of time intervals
 #define LINE_SENSOR_UPDATE 10
 #define MOTOR_UPDATE 20
-#define LINE_LOST_UPDATE 1000
+#define LINE_LOST_UPDATE 2000
 
 // //Declare my FSM
 // #define STATE_INITIAL 0
@@ -119,34 +119,33 @@ void loop() {
       break;
     case 3:
       //if all 3 sensors are black stop turn to the right
-      if (lineFound == true){
+      if (lineFound == true) {
         lineFollowing();
         Line = 3;
       }
-      if (lineFound == false){
-      Line = 4;
+      if (lineLost == true) {
+        Line = 4;
       }
-     // Line = 3;
+      Line = 0;
       break;
     case 4:  //Line lost
-      //when the sensors have been all white for 3 seconds turn around 180 deg
-      // if (lineSensor.sensor_read[0] && lineSensor.sensor_read[1] && lineSensor.sensor_read[2] && lineSensor.sensor_read[3] && lineSensor.sensor_read[4] < 1500) {
-      //   if (lineFound == true) {
-      //     lineLost = true;
-      //     linelost_ts = millis();
-      //     motors.stopMotors();
-      //   }
-      // }
+             //when the sensors have been all white for 3 seconds turn around 180 deg
+      if (lineLost == true){
 
-      // elapsed_t = linelost_ts;
+        linelost_ts = millis();
 
-      // if (elapsed_t > LINE_LOST_UPDATE) {
-      //   if (lineLost = true) {
-      //     turnAround();
-      //     linelost_ts = millis();
-      //   }
-      // }
-      Line = 0;
+        driveForwards();
+
+        elapsed_t = linelost_ts;
+
+        if (elapsed_t > LINE_LOST_UPDATE) {
+            motors.stopMotors();
+            //turnAround();
+            //linelost_ts = millis();
+          }
+        }
+      }
+      Line = 3;
       break;
   }
 }
@@ -194,8 +193,6 @@ void turnAround() {
 
 void lineFollowing() {
 
-  //lineFound = false;
-  
   float e_line;
   e_line = lineSensor.errorCalc();
 
@@ -214,11 +211,13 @@ void lineFollowing() {
 
   if (e_line < 0.1) {
     if (lineSensor.sensor_read[2] > 1500) {
-        lineFound = true;
+      lineFound = true;
+    }
+    if (lineSensor.sensor_read[0] && lineSensor.sensor_read[1] && lineSensor.sensor_read[2] && lineSensor.sensor_read[3] && lineSensor.sensor_read[4] < 1500) {
+      lineLost = true;
     }
   }
 }
-
 
 
 //off cuts of code to remeber
