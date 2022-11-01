@@ -8,9 +8,9 @@
 #define BUZZER_PIN 6  //Pin to activate buzzer
 
 //Global Definitions of time intervals
-#define LINE_SENSOR_UPDATE 10
+#define LINE_SENSOR_UPDATE 40
 #define MOTOR_UPDATE 20
-#define LINE_LOST_UPDATE 5000
+#define LINE_LOST_UPDATE 1000
 
 // //Declare my FSM
 // #define STATE_INITIAL 0
@@ -24,6 +24,7 @@
 int Line = 0;
 int state = 0;
 int pitch;
+unsigned int lineLostCount; 
 unsigned long ls_ts;
 unsigned long motor_ts;
 unsigned long linelost_ts;
@@ -59,7 +60,8 @@ void setup() {
 
   ls_ts = millis();
   motor_ts = millis();
-  //linelost_ts = millis();
+  linelost_ts = millis();
+
 }
 
 // put your main code here, to run repeatedly:
@@ -130,25 +132,32 @@ void loop() {
       break;
     case 4:  //Line lost
              //when the sensors have been all white for 3 seconds turn around 180 deg
-      if (lineLost == true) {
+      while(lineLost == true) {
 
         //lineFound = false;
+        
+        
+    
+        lineLostCount +=1;
+        Serial.print(lineLostCount);
+        Serial.print("\n");
+
 
         Serial.print("Line Lost");
         Serial.print("\n");
 
-        linelost_ts = millis();
-        Serial.print(linelost_ts);
-        Serial.print("\n");
-        Serial.print(current_ts);
-        Serial.print("\n");
+        // linelost_ts = millis();
+        // Serial.print(linelost_ts);
+        // Serial.print("\n");
+        // Serial.print(current_ts);
+        // Serial.print("\n");
 
 
-        driveForwards();
+        //driveForwards();
 
-        elapsed_t = current_ts - linelost_ts;
-        Serial.print(elapsed_t);
-        Serial.print("\n");
+        // elapsed_t = current_ts - linelost_ts;
+        // Serial.print(elapsed_t);
+        // Serial.print("\n");
 
 
 
@@ -160,20 +169,19 @@ void loop() {
             lineFound = true;
             Line = 3;
           }
-        //   break;
-        // }
 
-        //   while(elapsed_t > LINE_LOST_UPDATE) {
-        //     Serial.print("Stopped");
-        //     Serial.print("\n");
-        //     motors.stopMotors();
+          if(lineLostCount > LINE_LOST_UPDATE) {
+            Serial.print("Stopped");
+            Serial.print("\n");
+            motors.stopMotors();
         //     //turnAround();
-        //     //delay(10000);
+            delay(10000);
         //     // }else{
         //     //   lineFound = true;
         //     //   Line = 3;
         //     break;
-        //   }
+           }
+       break;
          }
    
         Line = 0;
@@ -200,7 +208,7 @@ void loop() {
 
   void driveForwards() {
 
-    motors.setPower(20, 20);
+    motors.setPower(30, 30);
     motors.leftForward();
     motors.rightForward();
     Serial.print("drive forwards");
@@ -230,6 +238,7 @@ void loop() {
   void lineFollowing() {
 
     lineLost = false;
+     
 
     Serial.print("line Following");
     Serial.print("\n");
@@ -263,9 +272,12 @@ void loop() {
 
     if (e_line < 0.1) {
       if (lineSensor.sensor_read[2] > 1500) {
+        lineLostCount = 0;
         lineFound = true;
+        Serial.print("line found");
+        Serial.print("\n");
       }
-      if (lineSensor.sensor_read[0] && lineSensor.sensor_read[1] && lineSensor.sensor_read[2] && lineSensor.sensor_read[3] && lineSensor.sensor_read[4] < 1200) {
+      if (lineSensor.sensor_read[0] && lineSensor.sensor_read[1] && lineSensor.sensor_read[2] && lineSensor.sensor_read[3] && lineSensor.sensor_read[4] < 1500) {
         lineLost = true;
       }
     }
