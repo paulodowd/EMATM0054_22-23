@@ -9,7 +9,7 @@
 
 //Global Definitions of time intervals
 #define LINE_SENSOR_UPDATE 40
-#define LINE_LOST_UPDATE 1500
+#define LINE_LOST_UPDATE 1000
 
 int Line = 0;
 int pitch;
@@ -196,13 +196,13 @@ void turnOn() {
 }
 
 void turnAround() {
-  motors.setPower(30, 30);
+  motors.setPower(20, 20);
   motors.leftReverse();
   motors.rightForward();
-  delay(1000);
+  delay(1800);
   motors.stopMotors();
   driveForwards();
-  delay(2000);
+  delay(1000);
 }
 
 void lineFollowing() {
