@@ -13,7 +13,6 @@
 
 int Line = 0;
 int pitch;
-int totalTurns = 0; 
 unsigned int lineLostCount;
 unsigned long ls_ts;
 unsigned long motor_ts;
@@ -25,7 +24,7 @@ LineSensor_c lineSensor;
 
 boolean led_state;  // Variable to "remember" the state of the LED, and toggle it.
 boolean lineFound;  // Variable to know when the line has been found
-boolean lineLost;
+boolean lineLost;   // Variable to know when the line has been lost
 
 
 // put your setup code here, to run once:
@@ -71,9 +70,10 @@ void loop() {
 
     ls_ts = millis();
   }
-
+  //switch case to allow my code to have different states that can be entered into if certain parameters are met
   switch (Line) {
     case 0:
+      //initialising each of the motor states
       motors.initialiseMotor();
       Line = 1;
       break;
@@ -89,7 +89,7 @@ void loop() {
       Line = 2;
       break;
     case 2:
-      //if all 3 sensors are black stop turn to the left
+      //if all 3 sensors are black stop & turn on the line
       if (lineSensor.sensor_read[1] && lineSensor.sensor_read[2] && lineSensor.sensor_read[3] > 1500) {
         if (lineFound == false) {
           turnOn();
@@ -100,7 +100,7 @@ void loop() {
       Line = 3;
       break;
     case 3:
-      //if all 3 sensors are black stop turn to the right
+      //line following or if line lost switch to the line lost case
       if (lineFound == true) {
         lineFollowing();
         Line = 3;
@@ -111,7 +111,7 @@ void loop() {
       Line = 4;
       break;
     case 4:
-      //When the sensors have been all white for 3 seconds turn around 180 deg
+      //Protocol if the line is lost
       while (lineLost == true) {
 
 
@@ -127,7 +127,7 @@ void loop() {
           lineFound = true;
           Line = 3;
         }
-
+        //if the line is lost for more than the update turn around 180 degrees and look for the line to re-enter the line following case
         if (lineLostCount > LINE_LOST_UPDATE) {
           Serial.print("Stopped");
           Serial.print("\n");
@@ -140,8 +140,8 @@ void loop() {
             lineFound = true;
             Line = 3;
           }
-          
-          if (current_ts > 60000) {//will only stop if its been longer than 60secs
+
+          if (current_ts > 60000) {  //will only stop if its been longer than 60secs
             motors.stopMotors();
             delay(10000);
           }
@@ -151,20 +151,13 @@ void loop() {
 
       Line = 5;
       break;
-      case 5:
+    case 5:
 
       Line = 0;
-      
   }
 }
 
-
-
-
-
-
-
-
+//functions used throughout main
 
 void beep(int toggle_duration) {
   digitalWrite(BUZZER_PIN, HIGH);
