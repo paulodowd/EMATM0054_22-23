@@ -17,7 +17,7 @@ void setup() {
   Serial.println("***RESET***");
 
   // Set LED pin as an output
-  pinMode( LED_PIN, OUTPUT );
+  pinMode(LED_PIN, OUTPUT);
 
   // Set initial state of the LED
   led_state = false;
@@ -29,7 +29,7 @@ void loop() {
 
   // Using an if statement to toggle a variable
   // with each call of loop()
-  if( led_state == true ) {
+  if (led_state == true) {
     led_state = false;
   } else {
     led_state = true;
@@ -37,7 +37,7 @@ void loop() {
 
   // We use the variable to set the
   // debug led on or off on the 3Pi+
-  digitalWrite( LED_PIN, led_state );
+  digitalWrite(LED_PIN, led_state);
 
   Serial.println("loop");
   delay(500);
